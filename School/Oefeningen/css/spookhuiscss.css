@@ -1,0 +1,218 @@
+
+/**
+Je moet eerst een Max width in voeren met @media. 
+Daarna min-width
+**/
+
+/**---------Lage resolutie: 480px en meer --------------**/
+@media only screen and (min-width : 480px){
+
+    body {
+        margin: auto;   
+        background-color: lightgray;
+        width: auto;
+    }
+       
+#container {    
+    width: 90%;
+    height: auto;
+   
+    background-color: white;
+
+    /**border: 1px solid black; **/
+
+}
+
+header{
+    width: 100%;
+    height: 90%;
+    background-color: rgb(20, 79, 206);
+    font-family:initial;
+    color: yellow;
+ }
+ nav,footer {
+    margin-top: -25px;;
+    margin-bottom: 10px;;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    background-color: black;
+    color: orange;
+
+}
+
+#footerID {
+    margin-top: 5px;
+}
+
+nav{
+   
+}
+
+ul li {
+    height: 30px;;
+    margin: 5%;
+    margin-top: 10px;
+    display: inline;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: orange;
+    
+}
+a:hover{
+    color: yellow;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    background-color: orange;
+  /**   border-radius: 50%;
+   **   border: 1px solid orange;
+    **/
+}
+
+.box{
+    position: relative;
+    width: 90%;
+    border: 1px solid black;
+    background-color:rgb(20, 79, 206);
+    margin: 5px;
+    float: left;
+    height: 90%;
+    align-items: center;
+    box-shadow: 2px 2px black;
+    margin-left: 5%;
+    
+}
+
+.textblok {
+    margin: 5px;
+    clear: left;
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px black inset;
+    margin-left: 5%;
+}
+.textBox {
+ position: absolute;
+ top: -10px;
+ right: 70%;
+ color: yellow;
+ text-shadow: 1px 1px blue;
+ font-family:Fiddums Family;
+
+  }
+
+  #spookhuisImage {
+    width: 90%;
+    height: 90%;
+  
+  }
+  #imageDiv {
+    align-items: center;
+    margin-left: auto;
+    
+   
+  }
+}
+
+
+@media only screen and (min-width : 1024px){
+    body {
+        margin: auto;
+        background-color: lightgray;
+    }
+    
+    #container {
+    width: 960px;
+    height: auto;
+    margin: auto;
+    background-color: white;
+    
+    /**border: 1px solid black; **/
+    
+    }
+    
+    header{
+    width: 960px;
+    height: auto;
+    background-color: rgb(20, 79, 206);
+    font-family:initial;
+    color: yellow;
+    }
+    
+    nav,footer {
+    margin-top: -25px;;
+    margin-bottom: 10px;;
+    align-items: center;
+    width: 960px;
+    height: 70px;
+    background-color: black;
+    color: orange;
+    
+    }
+    
+    #footerID {
+    margin-top: 5px;
+    }
+    
+    
+    ul li {
+    display: inline;
+    align-items: center;
+    margin: 60px;
+    
+    }
+    
+    ul li:hover{
+    color: yellow;
+    }
+    
+    .box{
+    position: relative;
+    width: 305px;
+    border: 1px solid black;
+    background-color:rgb(20, 79, 206);
+    margin: 5px;
+    float: left;
+    height: 350px;
+    align-items: center;
+    box-shadow: 2px 2px black;
+    
+    
+    }
+    
+    .textblok {
+    margin: 5px;
+    clear: left;
+    width: 939px;
+    height: 150px;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 2px 2px black inset;
+    }
+    .textBox {
+    position: absolute;
+    top: -10px;
+    right: 150px;
+    color: yellow;
+    text-shadow: 1px 1px blue;
+    font-family:Fiddums Family;
+    }
+    #spookhuisImage {
+        width: 900px;
+        height: 320px;
+    
+         }
+
+ #imageDiv {
+    align-items: center;
+    margin-left: auto;
+   
+  }
+    }
+
+

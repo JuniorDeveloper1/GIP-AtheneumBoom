@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+  
+    #container {
+        width: 1000px;
+        height: 690px;
+        margin: auto;
+        padding: auto;
+        background-color: grey;
+    }
+
+    #een {
+        float: left;
+        width: 412px;
+        height: 690px;
+
+    }
+
+    #twee {
+        float: right;
+        width: 412px;
+        height: 412px;
+    }
+
+    #een-een {
+        float: left;
+        width: 263px;
+        height: 132px;
+        background-color: red;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+ 
+
+    }
+    #een-twee {
+        float: left;
+        width: 129px;
+        height: 132px;
+        background-color: BLUE;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black
+
+    }
+
+    #een-drie {
+        float: left;
+        width: 263px;
+        height: 132px;
+        background-color: white;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+    #een-vier{
+        float: left;
+        width: 129px;
+        height: 260px;
+        background-color: yellow;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+        margin-top: -143px;
+    }
+
+    #een-vijf{
+            clear: left;      
+            float: left;
+            width: 126.5px;
+            height: 118px;
+            border-right: 10px solid black;
+            border-bottom: 10px solid black;
+            background-color: yellow;
+
+           
+    }
+    #een-zes{
+            float: left;
+            width: 126.5px;
+            height: 118px;
+            border-right: 10px solid black;
+            border-bottom: 10px solid black;
+          
+        
+            background-color: blue;
+    }
+    #een-zeven {
+        float: left;
+        clear: left;
+        width: 129px;
+        height: 260px;
+        background-color: yellow;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+
+    #een-acht{
+        visibility: visible;
+        float: left;
+        width: 263px;
+        height: 132px;
+        margin-top: 118px;
+        background-color: red;
+        border-top: 10px solid black;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+
+    #twee-een {
+        float: right;
+        width: 263px;
+        height: 132px;
+        background-color: red;
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+    #twee-twee {
+        float: right;
+        width: 129px;
+        height: 132px;
+        background-color: BLUE;
+   
+        border-bottom: 10px solid black;
+        border-left:10px solid black;
+    }
+
+    #twee-drie {
+        float: right;
+        width: 263px;
+        height: 132px;
+        background-color: white;
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+    #twee-vier{
+        float: right;
+        width: 129px;
+        height: 260px;
+        background-color: yellow;
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+        margin-top: -143px;
+    }
+
+    #twee-vijf{
+            clear: right;      
+            float: right;
+            width: 126.5px;
+            height: 118px;
+            border-left: 10px solid black;
+            border-bottom: 10px solid black;
+            background-color: yellow;
+
+           
+    }
+    #twee-zes{
+            float: right;
+            width: 126.5px;
+            height: 118px;
+            border-left: 10px solid black;
+            border-bottom: 10px solid black;
+          
+        
+            background-color: blue;
+    }
+
+    #twee-zeven {
+        float: right;
+        clear: right;
+        width: 129px;
+        height: 260px;
+        background-color: yellow;
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+
+    #twee-acht{
+        float: right;
+        width: 263px;
+        height: 132px;
+        margin-top: 118px;
+        background-color: red;
+        border-top: 10px solid black;   
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+    }
+
+footer {
+    width: 1000px;
+    height: 30px;
+    margin: auto;
+    margin-top: 10px;
+    padding: auto;
+    background-color: grey;
+    }
+
+    #grafitti {
+                margin-top: 405px;
+                width: 164.34px;
+                height: 139px;
+                float: left;
+            }
+
+    #buttonVier{
+        visibility: hidden;
+    }
+
+  
+</style>
+
+<script>
+    function zegKleur() {
+        document.getElementById("een-een").innerHTML = "deze kleur is rood";
+    }
+
+    function zegDiv() {
+        document.getElementById("een-een").innerHTML = "een_een";
+    }
+    var aantal = 0;
+    function hoverDiv() {
+        aantal++;
+        document.getElementById("een-zeven").innerHTML = "Je bent al " + aantal + " keer over de div gehoverd";
+    }
+
+    function verwijderAchter() {
+        document.getElementById("een-acht").style.visibility = "hidden";
+    }
+
+    function backgroundColor() {
+        var allElements = document.getElementsByClassName("element");
+            var length = allElements.length;
+            for(var i=0;i<length;i++) {
+                document.getElementsByClassName("element")[i].style.backgroundColor = "purple";
+            }
+            document.getElementById("container").style.backgroundColor = "purple";
+        }
+    
+        function alertDiv() {
+            alert("ja")
+        }
+
+        function veranderVierTwee() {
+            document.getElementById("twee-drie").style.background = "rose";
+        }
+
+        function grafitti(){
+            document.getElementById("grafitti").innerHTML = "<h1 style='color: green;'>Grafitti rules!!!</h1>";
+        }
+
+        function resetPage() {
+
+            location.reload();
+        }
+
+        
+        function divTerug(type) {
+            if(type == "div") {
+                document.getElementById("een-acht").style.visibility = "hidden";
+                document.getElementById("buttonVier").style.visibility = "visible";
+         
+            }else if(type == "knop") {
+                document.getElementById("buttonVier").style.visibility = "hidden";
+                document.getElementById("een-acht").style.visibility = "visible";
+            }
+        }
+
+</script>
+</head>
+<body align="center">
+    <div id="container">
+
+    <div id="een" class="element"> 
+        <div id="een-een" onmouseenter="zegKleur()" onmouseleave="zegDiv()"  class="element"> een-een</div>
+        <div id="een-twee" class="element">een-twee</div>
+        <div id="een-drie" class="element">een-drie</div>
+        <div id="een-vijf" class="element">een-vijf</div>
+        <div id="een-zes" class="element">een-zes</div>
+        <div id="een-vier" class="element"> een-vier </div>
+        <div id="een-zeven" class="element" onmouseover="hoverDiv()">vier-links</div>
+        <div id="een-acht"  class="element"onmouseover="divTerug('div')">een-achter</div>
+    </div>
+
+    <div id="grafitti"></div>
+    <div id="twee" class="element">
+        <div id="twee-een" class="element"> twee-een</div>
+        <div id="twee-twee" class="element">twee-twee</div>
+        <div id="twee-drie" class="element">twee-drie</div>
+        <div id="twee-vijf" class="element">twee-vijf</div>
+        <div id="twee-zes" class="element">twee-zes</div>
+        <div id="twee-vier" class="element"> twee-vier </div>
+        <div id="twee-zeven" class="element">twee-zeven</div>
+        <div id="twee-acht" class="element">twee-achter</div>
+    </div>
+      
+    </div>
+
+    <footer>
+        <div id="knoppen"><button onclick="alertDiv()">Knop 1</button> 
+                          <button onclick="veranderVierTwee()">Knop 2</button>
+                          <button onclick="grafitti()">Knop 3</button>
+                          <button onclick="backgroundColor()">knop 4</button> 
+                          <button onclick="resetPage()">Knop 5 </button>
+                          <button id="buttonVier" onclick="divTerug('knop')">Zet vier_links terug</button>
+        </div>
+    </footer>
+    
+</body>
+</html>
