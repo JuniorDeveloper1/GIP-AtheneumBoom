@@ -189,7 +189,8 @@ span#error {
             </tr>
 
             <tr> <td><input type="text" size="6" maxlength="5" placeholder="Captcha" name="captchaInvoer"></td>
-            <td><img src="../captcha.php"></td>
+        
+            <td><img src="./captcha.php"></td>
             <?php   
             if(isset($_POST["button"])){
                 $klopt =false;
@@ -220,7 +221,7 @@ span#error {
 
 
             <?php
-            include("C:/USBWebserver/USBWebserver_Algemeen/root/GIP/dbConnection.php");
+            include("../dbConnection.php");
             
 
             // Maak gebruiker
