@@ -1,4 +1,4 @@
-<?php session_start() ?>
+﻿<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +24,10 @@
 
 h1{
     text-align: center;
+    width: 100%;
+    height: auto;
+    float:left;
+    margin-left: 50px;
 }
 
 #table{
@@ -190,7 +194,7 @@ span#error {
 
             <tr> <td><input type="text" size="6" maxlength="5" placeholder="Captcha" name="captchaInvoer"></td>
         
-            <td><img src="./captcha.php"></td>
+            <td><img src="captcha.php"></td>
             <?php   
             if(isset($_POST["button"])){
                 $klopt =false;
