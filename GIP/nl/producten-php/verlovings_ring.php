@@ -63,7 +63,9 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
             if($result -> num_rows > 0) {
                 while($artikel = $result -> fetch_assoc()) {
 
-                    echo "<div id='product'>";
+                    echo "<a href='productenTest.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
+
+                    
                     echo "<img src=".$artikel["imageURL"]."width='400' height='400'>";
                     echo "<a><span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br></a>";
                     echo "<span> €".$artikel["Prijs"]."</span> <br>";
