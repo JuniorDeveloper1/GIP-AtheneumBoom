@@ -19,8 +19,12 @@
         }
     </script>
     <style> 
+<<<<<<< HEAD
 
         @media only screen and (min-width: 900px) {
+=======
+               @media only screen and (min-width: 856px) {
+>>>>>>> master
              #container {
                 align-items: center;
             }
@@ -122,7 +126,11 @@
   
     }
 
+<<<<<<< HEAD
     @media only screen and (max-width: 900px) {
+=======
+    @media only screen and (max-width: 856px) {
+>>>>>>> master
              #container {
                 align-items: center;
             }
@@ -131,8 +139,13 @@
                 height: 500px;
                 border-radius: 5px;
                 margin: 10px 10px 10px 4px;
+<<<<<<< HEAD
                 /**float: right;**/
                 /**  border: 1px solid black;**/
+=======
+                float: right;
+                border: 1px solid black;
+>>>>>>> master
             }
             #product span {
                 font-size: 15px;
@@ -149,7 +162,10 @@
             
             }
 
+<<<<<<< HEAD
             
+=======
+>>>>>>> master
             #floatBreaker {
                 clear: both;
                 width: 100%;
@@ -163,6 +179,7 @@
                 margin-left: 1px;
             }
 
+<<<<<<< HEAD
             
             #productImage {
                 height: 100%;
@@ -239,6 +256,14 @@
 
             }
 
+=======
+            #productImage {
+                height: 100%;
+                width: 140%;
+                
+            }
+
+>>>>>>> master
     }
     </style>
 <body>

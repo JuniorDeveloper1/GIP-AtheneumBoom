@@ -144,4 +144,4 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
     <?php include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'; ?>
 </body>
-</html>
+</html
