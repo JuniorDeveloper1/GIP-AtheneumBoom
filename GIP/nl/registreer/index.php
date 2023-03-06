@@ -81,7 +81,7 @@ span#error {
 </head>
 <body>
 <?php 
-    include 'header.html'; 
+    include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
     $errors = true;
 ?>
 
@@ -192,40 +192,11 @@ span#error {
             ?></td>
             </tr>
 
-            <tr> <td><input type="text" size="6" maxlength="5" placeholder="Captcha" name="captchaInvoer"></td>
-        
-            <td><img src="captcha.php"></td>
-            <?php   
-            if(isset($_POST["button"])){
-                $klopt =false;
-                $captchaUitBestand = $_SESSION["captcha"];
-                if(!empty($_POST["captchaInvoer"])){
-                    if($captchaUitBestand != $_POST["captchaInvoer"]) {
-                        $klopt = false;
-                 }else {
-                    $klopt = true;
-                 }
-                }
-
-            }
-                
-            ?></tr>
-
-            <?php 
-            if(isset($_POST["button"])){
-                if($klopt == false) {
-                    echo "<tr><td colspan='2' id='test'>"."<span id='error'>"." De captcha klopt niet!"."</td> </tr>";
-                }
-            }
-
-               
-            ?>
-
             <tr><td colspan="2" id="test"><button type="submit" name="button">Registreer</button></td> </tr>
 
 
             <?php
-            include("../dbConnection.php");
+            include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
             
 
             // Maak gebruiker
@@ -234,17 +205,29 @@ span#error {
                /** if (!empty($_POST["voornaam"]) and !empty($_POST["achternaam"]) and !empty($_POST["gebruiksersnaam"]) and !empty($_POST["wachtwoord"]) and !empty($_POST["wachtwoordTwee"])) { */
 
                 if($errors == false) {
-                    $connect -> query("INSERT INTO `royalring`.`klant` 
-                    (`klantID` ,
-                    `klantVoornaam` ,
-                    `klantAchternaam` ,
-                    `klantGebruikersnaam` ,
-                    `klantEmail` ,
-                    `klantWachtwoord`) 
-                    VALUES 
-                    (NULL,'".$_POST["klantVoornaam"]."','".$_POST["klantAchternaam"]."','".$_POST["klantGebruikersnaam"]."','".$_POST["klantEmail"]."','".$_POST["klantWachtwoord"]."');"
+                    $connect -> query(
+                        "INSERT INTO `royalring`.`klant` 
+                        (`klantID` ,
+                        `klantVoornaam` ,
+                        `klantAchternaam` ,
+                        `klantGebruikersnaam` ,
+                        `klantEmail` ,
+                        `klantWachtwoord` ,
+                        `isActive`) 
+                        VALUES 
+                        (NULL,
+                        '".$_POST["klantVoornaam"]."',
+                        '".$_POST["klantAchternaam"]."',
+                        '".$_POST["klantGebruikersnaam"]."',
+                        '".$_POST["klantEmail"]."',
+                        '".$_POST["klantWachtwoord"]."',
+                        '0'
+                        );"
                     );
+                    
 
+                    echo "<script> window.open('registreerComfirmatie.php');</script>";
+                    include "sendEmail.php"; //INCLUDE MAIL VERZENDEN
                     echo "Gebruiker toegevoegd!<br>";
                   }
                     
@@ -266,6 +249,6 @@ span#error {
 </div>
 
 
-<?php include 'footer.html'; ?>
+<?php include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'); ?>
 </body>
 </html>
