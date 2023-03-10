@@ -148,6 +148,7 @@ span#error {
             if(isset($_POST["button"])) {
                 if(!empty($_POST["klantEmail"])) {
                     $errors = false;
+                    $_SESSION["klantSession"] = $_POST["klantEmail"];
                 } else {
                     echo "<span id='error'>"." Vul uw email in!";
                     $errors = true;
@@ -189,7 +190,8 @@ span#error {
                     $errors = true;
                 }
             }
-            ?></td>
+            ?>
+            </td>
             </tr>
 
             <tr><td colspan="2" id="test"><button type="submit" name="button">Registreer</button></td> </tr>
@@ -205,7 +207,9 @@ span#error {
                /** if (!empty($_POST["voornaam"]) and !empty($_POST["achternaam"]) and !empty($_POST["gebruiksersnaam"]) and !empty($_POST["wachtwoord"]) and !empty($_POST["wachtwoordTwee"])) { */
 
                 if($errors == false) {
-                    $connect -> query(
+                    $wachtwoord = md5($_POST["klantWachtwoord"]);
+                    $connect -> 
+                    query(
                         "INSERT INTO `royalring`.`klant` 
                         (`klantID` ,
                         `klantVoornaam` ,
@@ -220,7 +224,7 @@ span#error {
                         '".$_POST["klantAchternaam"]."',
                         '".$_POST["klantGebruikersnaam"]."',
                         '".$_POST["klantEmail"]."',
-                        '".$_POST["klantWachtwoord"]."',
+                        '".$wachtwoord."',
                         '0'
                         );"
                     );
@@ -228,7 +232,7 @@ span#error {
 
                     echo "<script> window.open('registreerComfirmatie.php');</script>";
                     include "sendEmail.php"; //INCLUDE MAIL VERZENDEN
-                    echo "Gebruiker toegevoegd!<br>";
+                    echo "<br>Gebruiker toegevoegd!<br>";
                   }
                     
                /**   }else {

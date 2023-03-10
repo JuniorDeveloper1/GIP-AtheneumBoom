@@ -192,7 +192,7 @@
             <?php 
             $error = false;
                 if(isset($_POST["button"])){
-                    if(!empty($_POST["password"])){
+                    if(!empty($_POST["wachtwoord"])){
                         $error = false;
                     }else {
                         $error = true;
@@ -212,7 +212,11 @@
                 ?>
             </tr>
 
-            <tr><td><button type="submit" name="button">Login</button></td> <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="./registreer.php">Geen account</a></button></td></tr>
+            <tr><td><button type="submit" name="button">Login</button></td>
+
+            
+            
+            <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\registreer\index.php">Geen account</a></button></td></tr>
             </table>
         </form>
     </div>
@@ -221,19 +225,24 @@
             <?php 
 
             $ingelogd = false;
-            $query = "SELECT `klantWachtwoord`,`klantEmail` FROM `klant`";
+            $query = "SELECT `klantWachtwoord`,`klantEmail`,`isActive`  FROM `klant`";
             $result = $connect -> query($query);
                 if(isset($_POST["button"])) {
                     if($result -> num_rows > 0 ){
                         while($loginGegevens = $result -> fetch_assoc()) {
                             if($error == false) {
-                                if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == $_POST["wachtwoord"]) {
-                               //Als het werkt
-                         
-                             }else {
-                                //Als het niet werkt!
+                                 if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == $_POST["wachtwoord"]) {
+                                    if($loginGegevens["isActive"] == 1) {
+                                        //Als de persoon zijn email heeft gecomfirmed
+                                    }else {
+                                        echo "<span id='error'>Je hebt jou email nog niet bevestigd!</span>";
+                                    }
+                                 }else {
+                                    //Als het niet werkt!
 
                                 }
+
+                            
                             }
                         }
                      
