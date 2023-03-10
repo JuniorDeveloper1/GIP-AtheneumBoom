@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +22,8 @@
         }
     </script>
     <style> 
-<<<<<<< HEAD
 
-        @media only screen and (min-width: 900px) {
-=======
-               @media only screen and (min-width: 856px) {
->>>>>>> master
+         @media only screen and (min-width: 856px) {
              #container {
                 align-items: center;
             }
@@ -59,7 +58,7 @@
                 width: 500px;
                 height: inherit;
                 margin-left: 577px;
-                margin-top: -533px;
+                margin-top: -504px;
                 text-align: center;
 
             }
@@ -95,7 +94,7 @@
             }
 
             #buyDivPrice {
-                margin-top: 177px;
+                margin-top: 129px;
                 float:right;
                 font-size: 40px;
                 font-weight: 700;
@@ -124,13 +123,10 @@
 
             
   
-    }
+        }
 
-<<<<<<< HEAD
-    @media only screen and (max-width: 900px) {
-=======
     @media only screen and (max-width: 856px) {
->>>>>>> master
+
              #container {
                 align-items: center;
             }
@@ -138,14 +134,12 @@
                 width: 360px;
                 height: 500px;
                 border-radius: 5px;
-                margin: 10px 10px 10px 4px;
-<<<<<<< HEAD
+                margin: 10px 407px 10px 4px;
+
                 /**float: right;**/
                 /**  border: 1px solid black;**/
-=======
+
                 float: right;
-                border: 1px solid black;
->>>>>>> master
             }
             #product span {
                 font-size: 15px;
@@ -162,10 +156,6 @@
             
             }
 
-<<<<<<< HEAD
-            
-=======
->>>>>>> master
             #floatBreaker {
                 clear: both;
                 width: 100%;
@@ -177,14 +167,12 @@
                 width: 775px;
                 margin: 0px auto;
                 margin-left: 1px;
-            }
-
-<<<<<<< HEAD
-            
+            }            
             #productImage {
                 height: 100%;
                 align-items: center;
                 /**width: 140%;**/
+                /** margin-left: -411px; */
             }
      
 
@@ -256,14 +244,11 @@
 
             }
 
-=======
             #productImage {
                 height: 100%;
                 width: 140%;
                 
             }
-
->>>>>>> master
     }
     </style>
 <body>
@@ -273,7 +258,8 @@
     
         $id = $_GET["productid"];
 
-        $query = "SELECT * FROM `horloges` WHERE ArtikelID = $id";
+        // echo $_SESSION["databaseProductLink"];
+        $query = "SELECT * FROM `".$_SESSION["databaseProductLink"]."` WHERE ArtikelID = $id";
         $result = $connect -> query($query);
 
         echo "<div id='three-row'>";
@@ -281,7 +267,6 @@
                 while($artikel = $result -> fetch_assoc()) {
                     echo "<div id='product'>";
                     echo "<img src=".$artikel["imageURL"]."id='productImage'>";
-
                     //echo "<span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br>";
                     //echo "<span> €".$artikel["Prijs"]."</span> <br>";
                     //echo "<span> ".$artikel["Omschrijving"]."</span>";

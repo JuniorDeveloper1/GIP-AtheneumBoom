@@ -1,4 +1,5 @@
 <?php 
+    session_start();
 
     function generateRandomString($length = 10) {
       $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -12,19 +13,19 @@
   
 
      //Dit is de session name
-      $_SESSION["RegisterCode"] = generateRandomString();
+     $_SESSION["RegisterCode"] = generateRandomString();
  
 
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
     
-         $naar = "nickje.debut@gmail.com";
+         $naar = $_SESSION["klantSession"];
          //Deze moet met een session veranderd worden naar de klant
          $onderwerp = "This is subject";
          
          $bericht = "Dit is het Admin team van royalring. 
-                     Gebruik deze code in het registratie formulier! Code: "."$[CODE].   ";
-         $bericht .= "U gebruikt de code in deze link!"."  <br>
+                     Gebruik deze code in het registratie formulier! - Code: ".$_SESSION["RegisterCode"];
+         $bericht .= " - U gebruikt de code in deze link!"."  <br>
          http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";
          
          $header = "From: RoyalRing";
