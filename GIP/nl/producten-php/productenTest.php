@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +22,8 @@
         }
     </script>
     <style> 
-               @media only screen and (min-width: 856px) {
+
+         @media only screen and (min-width: 856px) {
              #container {
                 align-items: center;
             }
@@ -54,7 +58,130 @@
                 width: 500px;
                 height: inherit;
                 margin-left: 577px;
-                margin-top: -533px;
+                margin-top: -504px;
+                text-align: center;
+
+            }
+
+            #buyDivAddToCart{
+                background-color: black;
+                width: 100%;
+                height: 80px;
+                color: white;
+                letter-spacing: 5px;
+                line-height: 80px;
+                text-align: center;
+                margin-top: 173px;
+            }
+
+            #buyDivAddToCart:hover {
+                background-color: white;
+                color: black;
+                width: 100%;
+                height: 80px;
+                letter-spacing: 5px;
+                line-height: 80px;
+                text-align: center;
+                border: 1px solid black;
+            }
+
+            #buyDivTitle {
+                font-size: 50px;
+                font-weight: 700;
+                text-align: center;
+                margin-top: 20px;
+                margin-left: 71px;
+            }
+
+            #buyDivPrice {
+                margin-top: 129px;
+                float:right;
+                font-size: 40px;
+                font-weight: 700;
+            }
+
+            #description {
+                width: 100%;
+                height: 100%;
+                margin-top: 10px;
+                border-top: 1px solid grey;
+                border-bottom: 1px solid grey;
+                margin-bottom: 10px;
+                text-align: left;
+                line-height: 40px;
+                
+            }
+
+            #productgegevens {
+                font-size: 20px;
+            }
+
+            #description-span {
+                display: none;
+
+            }
+
+            
+  
+        }
+
+    @media only screen and (max-width: 856px) {
+
+             #container {
+                align-items: center;
+            }
+            #product {
+                width: 360px;
+                height: 500px;
+                border-radius: 5px;
+                margin: 10px 407px 10px 4px;
+
+                /**float: right;**/
+                /**  border: 1px solid black;**/
+
+                float: right;
+            }
+            #product span {
+                font-size: 15px;
+                margin-left: 100px;
+
+            }
+
+            #product span#artikelNaam {
+                margin-left: 100px;
+                font-size: 25px;
+                text-transform: uppercase;
+                margin-top: 5px;
+                letter-spacing: 3px;
+            
+            }
+
+            #floatBreaker {
+                clear: both;
+                width: 100%;
+                height: auto;
+            }
+            
+
+            #three-row {
+                width: 775px;
+                margin: 0px auto;
+                margin-left: 1px;
+            }            
+            #productImage {
+                height: 100%;
+                align-items: center;
+                /**width: 140%;**/
+                /** margin-left: -411px; */
+            }
+     
+
+
+            #buyDiv {
+                width: 100%;
+                height: inherit;
+              /**  margin-left: 577px;*/
+              /**  margin-top: -533px;*/
                 text-align: center;
 
             }
@@ -117,56 +244,11 @@
 
             }
 
-            
-  
-    }
-
-    @media only screen and (max-width: 856px) {
-             #container {
-                align-items: center;
-            }
-            #product {
-                width: 360px;
-                height: 500px;
-                border-radius: 5px;
-                margin: 10px 10px 10px 4px;
-                float: right;
-                border: 1px solid black;
-            }
-            #product span {
-                font-size: 15px;
-                margin-left: 100px;
-
-            }
-
-            #product span#artikelNaam {
-                margin-left: 100px;
-                font-size: 25px;
-                text-transform: uppercase;
-                margin-top: 5px;
-                letter-spacing: 3px;
-            
-            }
-
-            #floatBreaker {
-                clear: both;
-                width: 100%;
-                height: auto;
-            }
-            
-
-            #three-row {
-                width: 775px;
-                margin: 0px auto;
-                margin-left: 1px;
-            }
-
             #productImage {
                 height: 100%;
                 width: 140%;
                 
             }
-
     }
     </style>
 <body>
@@ -176,7 +258,8 @@
     
         $id = $_GET["productid"];
 
-        $query = "SELECT * FROM `horloges` WHERE ArtikelID = $id";
+        // echo $_SESSION["databaseProductLink"];
+        $query = "SELECT * FROM `".$_SESSION["databaseProductLink"]."` WHERE ArtikelID = $id";
         $result = $connect -> query($query);
 
         echo "<div id='three-row'>";
@@ -184,7 +267,6 @@
                 while($artikel = $result -> fetch_assoc()) {
                     echo "<div id='product'>";
                     echo "<img src=".$artikel["imageURL"]."id='productImage'>";
-
                     //echo "<span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br>";
                     //echo "<span> €".$artikel["Prijs"]."</span> <br>";
                     //echo "<span> ".$artikel["Omschrijving"]."</span>";

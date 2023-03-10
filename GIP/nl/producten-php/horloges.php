@@ -1,3 +1,6 @@
+<?php session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +64,7 @@
                 width: 360px;
                 height: 500px;
                 border-radius: 5px;
-                margin: 10px 10px 10px 4px;
+                margin: 10px 21px 10px 4px;
                 float: right;
                 border: 1px solid black;
             }
@@ -118,7 +121,7 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
                 echo "<div id='three-row'>";
                 while($artikel = $result -> fetch_assoc()) {
-                    $aantal++;
+                   $_SESSION["databaseProductLink"] = "horloges";    
 
                     echo "<a href='productenTest.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
                     echo "<img src=".$artikel["imageURL"]."id='productImage'>";
