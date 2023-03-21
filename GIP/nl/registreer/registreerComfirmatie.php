@@ -184,8 +184,6 @@
                                 //$mailCodeError = false;
                                 //echo $_SESSION["RegisterCode"];
                                 ?>
-
-
                     <div id="login" align="middle">
                         <form name="form" method="POST">
                             <h1>Comfirmatie</h1>
@@ -224,6 +222,7 @@
                                         echo "<td> <span id='error'>Vul een Code in </span> </td>";
                                     }
                                 }
+                                //Test
                         ?></tr>
 
                 <tr><td><button type="submit" name="button">Comfirm</button></td> 
