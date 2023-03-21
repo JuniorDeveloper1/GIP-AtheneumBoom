@@ -194,6 +194,8 @@
                             <?php 
                              //todo: Je moet klantSession veranderen met email uit databank
                             //todo: Het zelfde met code. Anders gaan er problemen ontstaan.
+
+                            //TODO: FULLY REWRITE REGISTER COMFIRMATIE AND PUSH TO REGISTER FOR BACKUP
   
 
                             $error = false;
