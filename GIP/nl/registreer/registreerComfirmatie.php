@@ -175,7 +175,7 @@
     <body>
     <?php 
              include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');; 
-            include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
+             include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
             
         ?>
 
@@ -184,17 +184,20 @@
                                 $mailCodeError = false;
                                 //echo $_SESSION["RegisterCode"];
                                 ?>
+
+
                     <div id="login" align="middle">
                         <form name="form" method="POST">
                             <h1>Comfirmatie</h1>
                             <table id="table">
                             <tr><td> <input type="email" placeholder="Email" name="email"> </td>
+                            //todo: Je moet klantSession veranderen met email uit databank
+                            //todo: Het zelfde met code. Anders gaan er problemen ontstaan.
                             <?php 
                             $error = false;
                                 if(isset($_POST["button"])){
                                     if(!empty($_POST["email"])){
                                          $error = false;
-
                                          if($_SESSION["klantSession"] == $_POST["email"]){
                                             $mailCodeError = true;
                                             
@@ -207,7 +210,10 @@
                                         echo "<td> <span id='error'>Vul een email in </span> </td>";
                                     }
                                 }
-                            ?></tr>
+                            ?>
+                            
+                        
+                        </tr>
 
                             <tr><td> <input type="text" placeholder="code" name="code"> </td>
                             <?php 
@@ -236,6 +242,7 @@
                                         //todo: Maak via de database connectie als de isActive naar 1 veranderd. 
                                         $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
 
+
                                         if ($connect->query($sql) === TRUE) {
                                             echo "<br>Je bent geregistreerd!";
                                           } else {
@@ -243,7 +250,7 @@
                                         }
                                         }else {
                                         //todo: Niet aanpassen -> error message
-                                              }
+                                        }
                                 }
                             ?>
                 </tr>
