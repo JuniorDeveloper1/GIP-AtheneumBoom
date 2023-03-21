@@ -233,14 +233,12 @@
                                     if($mailCodeError == true) {
                                         //todo: Maak via de database connectie als de isActive naar 1 veranderd. 
                                         $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
-                                       // $sql2 = "SELECT `klantEmail`,`klantWachtwoord` FROM `klant` WHERE `klantEmail`= '".$_POST["email"]."' AND `klantWachtwoord` = '".$_POST[]."'";
-
 
                                         if ($connect->query($sql) === TRUE) {
                                             echo "<br>Je bent geregistreerd!";
                                           } else {
                                             echo "<br> Er is een fout! Contacteer onze suppot! " . $connect->error;
-                                        }
+                                            }
                                         }else {
                                         //todo: Niet aanpassen -> error message
                                         }
@@ -262,10 +260,14 @@
 
 <?php 
 /**
-*$sqlEmail = "SELECT `klantEmail` FROM `klant`";
+*$sqlEmail = "SELECT `klantEmail`,`klantToken` FROM `klant`";
 *$result = $connect -> query($sqlEmail);
 *if($result -> num_rows > 0 ){
 *while($loginGegevens = $result -> fetch_assoc()) { 
+
+*if(klantEmail == email && KlantToken == token) {
+    *   Klopt
+ *}
  */
 
 
