@@ -82,6 +82,7 @@ span#error {
 <body>
 <?php 
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+    include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
     $errors = true;
 ?>
 
@@ -153,6 +154,21 @@ span#error {
                     echo "<span id='error'>"." Vul uw email in!";
                     $errors = true;
                 }
+
+                $emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["klantEmail"]."'";
+                $emailResult =  $connect -> query($emailSQL);
+                $emailExists = false;
+
+                if($emailResult -> num_rows > 0) {
+                    $emailExists = true;
+                    //echo "EMAIL EXIST MAN";
+                  
+                    
+                }else {
+                    $emailExists = false;
+                    //echo "KLOPTT";
+                 
+                }
             }
             ?></td>
             </tr>
@@ -198,7 +214,7 @@ span#error {
 
 
             <?php
-            include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
+           
             
 
             // Maak gebruiker
@@ -208,6 +224,7 @@ span#error {
 
                 if($errors == false) {
                     $wachtwoord = md5($_POST["klantWachtwoord"]);
+                if($emailExists == false) {
                     $connect -> 
                     query(
                         "INSERT INTO `royalring`.`klant` 
@@ -228,9 +245,12 @@ span#error {
                         '0'
                         );"
                     );
+                }else {
+                    echo "EMAIL EXISTS";
+                }
                     
 
-                    echo "<script> window.open('registreerComfirmatie.php');</script>";
+                    //echo "<script> window.open('registreerComfirmatie.php');</script>";
                     include "sendEmail.php"; //INCLUDE MAIL VERZENDEN
                     echo "<br>Gebruiker toegevoegd!<br>";
                   }

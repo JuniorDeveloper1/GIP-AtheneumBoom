@@ -231,7 +231,7 @@
                     if($result -> num_rows > 0 ){
                         while($loginGegevens = $result -> fetch_assoc()) {
                             if($error == false) {
-                                 if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == $_POST["wachtwoord"]) {
+                                 if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == md5($_POST["wachtwoord"])) {
                                     if($loginGegevens["isActive"] == 1) {
                                         //Als de persoon zijn email heeft gecomfirmed
                                     }else {
