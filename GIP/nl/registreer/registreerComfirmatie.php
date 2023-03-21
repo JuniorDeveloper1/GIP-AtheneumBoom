@@ -181,7 +181,7 @@
 
     <div id="login-geheel">
                                 <?php  
-                                $mailCodeError = false;
+                                //$mailCodeError = false;
                                 //echo $_SESSION["RegisterCode"];
                                 ?>
 
@@ -191,25 +191,23 @@
                             <h1>Comfirmatie</h1>
                             <table id="table">
                             <tr><td> <input type="email" placeholder="Email" name="email"> </td>
-                            //todo: Je moet klantSession veranderen met email uit databank
-                            //todo: Het zelfde met code. Anders gaan er problemen ontstaan.
+                           
+                            
                             <?php 
+                             //todo: Je moet klantSession veranderen met email uit databank
+                            //todo: Het zelfde met code. Anders gaan er problemen ontstaan.
+  
+
                             $error = false;
-                                if(isset($_POST["button"])){
+                            if(isset($_POST["button"])){
+
                                     if(!empty($_POST["email"])){
-                                         $error = false;
-                                         if($_SESSION["klantSession"] == $_POST["email"]){
-                                            $mailCodeError = true;
-                                            
-                                         }else {
-                                            echo "De email is niet correct!";
-                                            $mailCodeError = false;
-                                         }
-                                    }else {
-                                        $error = true;
-                                        echo "<td> <span id='error'>Vul een email in </span> </td>";
+                                             $error = false;
+                                        }else {
+                                            $error = true;
+                                            echo "<td> <span id='error'>Vul een email in </span> </td>";
+                                        }
                                     }
-                                }
                             ?>
                             
                         
@@ -221,13 +219,6 @@
                                 if(isset($_POST["button"])){
                                     if(!empty($_POST["code"])){
                                         $error = false;
-                                        if($_SESSION["RegisterCode"] == $_POST["code"]) {
-                                            $mailCodeError = true;
-                                            echo "KLOPT!!!";
-                                        }else {
-                                            $mailCodeError = false;
-                                            echo "Uw code klopt niet!";
-                                        }
                                     }else {
                                         $error = true;
                                         echo "<td> <span id='error'>Vul een Code in </span> </td>";
@@ -241,6 +232,7 @@
                                     if($mailCodeError == true) {
                                         //todo: Maak via de database connectie als de isActive naar 1 veranderd. 
                                         $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
+                                       // $sql2 = "SELECT `klantEmail`,`klantWachtwoord` FROM `klant` WHERE `klantEmail`= '".$_POST["email"]."' AND `klantWachtwoord` = '".$_POST[]."'";
 
 
                                         if ($connect->query($sql) === TRUE) {
@@ -266,3 +258,14 @@
     
 </body>
 </html>
+
+<?php 
+/**
+*$sqlEmail = "SELECT `klantEmail` FROM `klant`";
+*$result = $connect -> query($sqlEmail);
+*if($result -> num_rows > 0 ){
+*while($loginGegevens = $result -> fetch_assoc()) { 
+ */
+
+
+?>
