@@ -181,11 +181,8 @@
 
     <div id="login-geheel">
                                 <?php  
-                                //$mailCodeError = false;
                                 //echo $_SESSION["RegisterCode"];
                                 ?>
-
-
                     <div id="login" align="middle">
                         <form name="form" method="POST">
                             <h1>Comfirmatie</h1>
@@ -196,6 +193,8 @@
                             <?php 
                              //todo: Je moet klantSession veranderen met email uit databank
                             //todo: Het zelfde met code. Anders gaan er problemen ontstaan.
+
+                            //TODO: FULLY REWRITE REGISTER COMFIRMATIE AND PUSH TO REGISTER FOR BACKUP
   
 
                             $error = false;
@@ -224,25 +223,31 @@
                                         echo "<td> <span id='error'>Vul een Code in </span> </td>";
                                     }
                                 }
+                                //Test
                         ?></tr>
 
                 <tr><td><button type="submit" name="button">Comfirm</button></td> 
                             <?php 
                                 if(isset($_POST["button"])) {
-                                    if($mailCodeError == true) {
-                                        //todo: Maak via de database connectie als de isActive naar 1 veranderd. 
-                                        $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
-                                       // $sql2 = "SELECT `klantEmail`,`klantWachtwoord` FROM `klant` WHERE `klantEmail`= '".$_POST["email"]."' AND `klantWachtwoord` = '".$_POST[]."'";
-
-
-                                        if ($connect->query($sql) === TRUE) {
-                                            echo "<br>Je bent geregistreerd!";
-                                          } else {
-                                            echo "<br> Er is een fout! Contacteer onze suppot! " . $connect->error;
-                                        }
-                                        }else {
-                                        //todo: Niet aanpassen -> error message
-                                        }
+                                    $sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
+                                    $result = $connect -> query($sqlTokenCheck);
+                                    if($result -> num_rows > 0 ){
+                                        while($loginGegevens = $result -> fetch_assoc()) { 
+                                            if(($loginGegevens["klantEmail"] == $_POST["email"] 
+                                            && $loginGegevens["klantToken"] == $_POST["code"]) == TRUE) {                                   
+                                                $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
+                                                  if ($connect->query($sql) === TRUE) {
+                                                    echo "<br>Je bent geregistreerd!";
+                                                  } 
+                                                  else
+                                                  {
+                                                     echo "<br> Er is een fout! Contacteer onze suppot! " . $connect->error;
+                                                }
+                                            }else {
+                                                echo "Er is iets misgegaan!".$connect->error;
+                                            }
+                                         }
+                                    }
                                 }
                             ?>
                 </tr>
@@ -261,10 +266,12 @@
 
 <?php 
 /**
-*$sqlEmail = "SELECT `klantEmail` FROM `klant`";
-*$result = $connect -> query($sqlEmail);
-*if($result -> num_rows > 0 ){
-*while($loginGegevens = $result -> fetch_assoc()) { 
+*$
+
+
+*if() {
+    *   Klopt
+ *}
  */
 
 
