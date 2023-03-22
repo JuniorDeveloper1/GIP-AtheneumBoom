@@ -114,6 +114,9 @@
 
         #table{
             border: none;
+            margin-left: auto;
+            align-items: center;
+            /**margin-left: 302px;*/
             
         }
 
@@ -131,7 +134,7 @@
             cursor: pointer;
             width: 115px;
             border-radius: 15px;
-            margin-left: 77px;
+            margin-left: -72px; 
         }
 
         #buttonRegister{
@@ -225,7 +228,8 @@
             <?php 
 
             $ingelogd = false;
-            $query = "SELECT `klantWachtwoord`,`klantEmail`,`isActive`  FROM `klant`";
+            $gebruikersnaam = null;
+            $query = "SELECT `klantWachtwoord`,`klantEmail`,`isActive`,`klantGebruikersnaam`  FROM `klant`";
             $result = $connect -> query($query);
                 if(isset($_POST["button"])) {
                     if($result -> num_rows > 0 ){
@@ -233,12 +237,20 @@
                             if($error == false) {
                                  if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == md5($_POST["wachtwoord"])) {
                                     if($loginGegevens["isActive"] == 1) {
+                                        $ingelogd = true;
+                                        $gebruikersnaam = $loginGegevens["klantGebruikersnaam"];
+                                        echo "WERKTT";
                                         //Als de persoon zijn email heeft gecomfirmed
                                     }else {
+                                        $ingelogd = false;
                                         echo "<span id='error'>Je hebt jou email nog niet bevestigd!</span>";
                                     }
                                  }else {
                                     //Als het niet werkt!
+                                    echo "<span id='error'>Je hebt jou email nog niet bevestigd!</span> <br>";
+                                    echo "Email: ".$loginGegevens["klantEmail"]."<br>";
+                                    echo "Database wachtwoord: ".$loginGegevens["klantWachtwoord"]."<br>";
+                                    echo "Ingevulde wachtwoord: ".md5($_POST["wachtwoord"])."<br>";
 
                                 }
 
@@ -247,6 +259,8 @@
                         }
                      
                     }
+
+
 
                 }
 
