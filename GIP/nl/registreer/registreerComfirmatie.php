@@ -229,26 +229,31 @@
                 <tr><td><button type="submit" name="button">Comfirm</button></td> 
                             <?php 
                                 if(isset($_POST["button"])) {
-                                    $sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
-                                    $result = $connect -> query($sqlTokenCheck);
-                                    if($result -> num_rows > 0 ){
-                                        while($loginGegevens = $result -> fetch_assoc()) { 
-                                            if(($loginGegevens["klantEmail"] == $_POST["email"] 
-                                            && $loginGegevens["klantToken"] == $_POST["code"]) == TRUE) {                                   
+                                    //$sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
+
+                                    $email = $_POST["email"];
+                                    $token = $_POST["code"];
+                                    $sqlTokenCheck = "SELECT `klantEmail`, `klantToken` FROM `klant` WHERE `klantEmail` = '".$email."';";
+                                    $tokenCheckResults = $connect -> query($sqlTokenCheck);
+
+                                    if($tokenCheckResults -> num_rows > 0 ){
+                                        while($tokenCheckResult = $tokenCheckResults -> fetch_assoc()) {
+                                            if ($tokenCheckResult["klantToken"] == $token) {
                                                 $sql =  "UPDATE `royalring`.`klant` SET `isActive` = '1' WHERE `klant`.`klantEmail` = '".$_POST["email"]."';";
-                                                  if ($connect->query($sql) === TRUE) {
-                                                    echo "<br>Je bent geregistreerd!";
-                                                  } 
-                                                  else
-                                                  {
-                                                     echo "<br> Er is een fout! Contacteer onze suppot! " . $connect->error;
+                                                if ($connect->query($sql) === TRUE) {
+                                                  echo "<br>Je bent geregistreerd!";
+                                                } 
+                                                else
+                                                {
+                                                   echo "<br> Er is een fout! Contacteer onze suppot! " . $connect->error;
                                                 }
-                                            }else {
-                                                echo "Er is iets misgegaan!".$connect->error;
                                             }
-                                         }
+                                        }
+                                    }else {
+                                        echo "WERKT NIET!".$connect-> error;
                                     }
                                 }
+                        
                             ?>
                 </tr>
             </table>
@@ -263,16 +268,3 @@
     
 </body>
 </html>
-
-<?php 
-/**
-*$
-
-
-*if() {
-    *   Klopt
- *}
- */
-
-
-?>
