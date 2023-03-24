@@ -235,7 +235,8 @@
                     if($result -> num_rows > 0 ){
                         while($loginGegevens = $result -> fetch_assoc()) {
                             if($error == false) {
-                                 if($loginGegevens["klantEmail"]==$_POST["email"] && $loginGegevens["klantWachtwoord"] == md5($_POST["wachtwoord"])) {
+                                 if($loginGegevens["klantEmail"]==$_POST["email"]
+                                 && $loginGegevens["klantWachtwoord"] == md5($_POST["wachtwoord"])) {
                                     if($loginGegevens["isActive"] == 1) {
                                         $ingelogd = true;
                                         $gebruikersnaam = $loginGegevens["klantGebruikersnaam"];
@@ -243,7 +244,7 @@
                                         //Als de persoon zijn email heeft gecomfirmed
                                     }else {
                                         $ingelogd = false;
-                                        echo "<span id='error'>Je hebt jou email nog niet bevestigd!</span>";
+                                        //echo "<span id='error'>Je hebt jou email nog niet bevestigd!</span>";
                                     }
                                  }else {
                                     //Als het niet werkt!
