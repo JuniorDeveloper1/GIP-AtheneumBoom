@@ -223,10 +223,11 @@
             </table>
         </form>
     </div>
-</div>
+</div>                            
+
 
             <?php 
-
+        /** 
             $ingelogd = false;
             $gebruikersnaam = null;
             $query = "SELECT `klantWachtwoord`,`klantEmail`,`isActive`,`klantGebruikersnaam`  FROM `klant`";
@@ -264,8 +265,38 @@
 
 
                 }
-
+            */
             ?>
+
+<?php 
+                                if(isset($_POST["button"])) {
+                                    //$sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
+
+                                    $klopt = false;
+                                    $email = $_POST["email"];
+                                    $wachtwoord = $_POST["wachtwoord"];
+                                    $SQL = $connect -> query("SELECT * FROM `klant` WHERE `klantEmail` = '".$email."' AND `klantWachtwoord` = '".$wachtwoord."' AND `klantToken` = '1';");
+
+                                    if($SQL -> num_rows > 0 ){ 
+                                        $klopt = true;
+                                    }
+
+                                    if($klopt == true) {
+                                        echo "Je bent ingelogt!";
+                                    }else {
+                                        
+                                        echo "Nee jung toch ni ".$connect->error;
+                                    }
+                                }
+                                /**
+                                        *while($SQLs = $SQL -> fetch_assoc()) { 
+                                            *echo $SQLs["klantEmail"]." <br>";
+                                            *echo $SQLs["klantWachtwoord"]." <br>";
+                                            *echo $SQLs["klantToken"]." <br>";
+                                        *}
+                                 */
+                        
+?>
 <?php include 'footer.html'; ?>
 </body>
 </html>
