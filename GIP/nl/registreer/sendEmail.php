@@ -1,5 +1,16 @@
 <?php 
-    if(session_status() !==  PHP_SESSION_ACTIVE) session_start();
+  if(session_status() !==  PHP_SESSION_ACTIVE) session_start();
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
+  
+
+  require 'C:\USBWebserver\USBWebserver_GIP\root\GIP\PHPMailer\src\Exception.php';
+  require 'C:\USBWebserver\USBWebserver_GIP\root\GIP\PHPMailer\src\PHPMailer.php';
+  require 'C:\USBWebserver\USBWebserver_GIP\root\GIP\PHPMailer\src\SMTP.php';
+  
+
+   
 
     
 
@@ -19,7 +30,7 @@
 
   
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
-
+    
 
         /**z
         We maken hier een variable token met een random token.
@@ -45,24 +56,51 @@
                  }
 
 
-
+                
          $naar = $_SESSION["klantSession"];
-         //Deze moet met een session veranderd worden naar de klant
-         $onderwerp = "This is subject";
-         
-         $bericht = "Dit is het Admin team van royalring. 
-                     Gebruik deze code in het registratie formulier! - Code: ".$token;
-         $bericht .= " - U gebruikt de code in deze link!"."  <br>
-         http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";
+         //Deze moet met een session veranderd worden naar de klant         
+
          
          $header = "From: RoyalRing";
-        // $header .= "MIME-Version: 1.0\r\n";
-        // $header .= "Content-type: text/html\r\n";
-      
-         ini_set("SMTP", "smtp.telenet.be");
-         ini_set("sendmail_from", "royalring@telenet.be");
-         date_default_timezone_set("GMT");
-         mail($naar, $onderwerp, $bericht, $header);
+
+         $mail = new PHPMailer(true);
+
+         try {
+             
+             $mail->isSMTP();                                            
+             $mail->Host       = 'smtp.gmail.com';                     
+             $mail->SMTPAuth   = true;                                   
+             $mail->Username   = 'royalring.management@gmail.com';
+             $mail->Password   = 'yotbzlnyzmsvhbzs';
+             $mail->SMTPSecure = 'ssl';            
+             $mail->Port       = 465;                                   
+         
+             //Recipients
+             $mail->setFrom('royalring.management@gmail.com', 'RoyalRing Management');
+             $mail->addAddress($_SESSION["klantSession"]);          
+            // $mail->addReplyTo('info@example.com', 'Information');
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');   
+         
+             //Content
+             $mail->isHTML(true);                                
+             $mail->Subject = $header;
+
+            //$Bericht voor de BODY
+
+             $mail->Body=               
+             "Dit is het Admin team van royalring.  <br> <br>
+             Gebruik deze code in het registratie formulier! - Code: <h1>".$token;
+              "</h1> - U gebruikt de code in deze link!"."  <br> <br>
+             http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";;
+            // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+         
+             $mail->send();
+             echo 'Message has been sent';
+         } catch (Exception $e) {
+             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+         }
+
 
          echo "Er wordt nu een email naar uw mail gestuurd";
          

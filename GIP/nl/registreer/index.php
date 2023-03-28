@@ -155,11 +155,11 @@ span#error {
                     $errors = true;
                 }
 
-                $emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["klantEmail"]."'";
-                $emailResult =  $connect -> query($emailSQL);
+                //$emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["klantEmail"]."'";
+                //$emailResult =  $connect -> query($emailSQL);
                 $emailExists = false;
-                if($emailResult -> num_rows > 0) {$emailExists = true;}
-                                            else {$emailExists = false;}
+                //if($emailResult -> num_rows > 0) {$emailExists = true;}
+                //                            else {$emailExists = false;}
 
 
             }
