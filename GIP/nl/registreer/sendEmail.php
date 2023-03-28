@@ -89,19 +89,17 @@
             //$Bericht voor de BODY
 
              $mail->Body=               
-             "Dit is het Admin team van royalring.  <br> <br>
-             Gebruik deze code in het registratie formulier! - Code: <h1>".$token;
-              "</h1> - U gebruikt de code in deze link!"."  <br> <br>
-             http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";;
+             "Dit is het Management team van royalring.  <br> <br>
+             Gebruik deze code in het registratie formulier! - Code: <h1>".$token.
+             "</h1> - U gebruikt de code in deze link!"."  <br> <br>
+             http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
          
              $mail->send();
-             echo 'Message has been sent';
+             
          } catch (Exception $e) {
-             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+             echo "Message kan niet verzonden worden. RoyalRing-Management Error: {$mail->ErrorInfo}";
          }
-
-
          echo "Er wordt nu een email naar uw mail gestuurd";
          
 ?>
