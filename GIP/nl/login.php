@@ -33,6 +33,8 @@
 
         #table{
         border: none;
+        margin: auto 0px;
+        align-items: center;
 
         }
 
@@ -113,10 +115,11 @@
         }
 
         #table{
-            border: none;
-            margin-left: auto;
-            align-items: center;
-            /**margin-left: 302px;*/
+            text-align: center;
+            width: 100%;
+            height: auto;
+            float:left;
+            margin-left: 50px;
             
         }
 
@@ -138,7 +141,7 @@
         }
 
         #buttonRegister{
-            margin-left: -94px;
+            margin-left: -425px;
         }
 
         button:hover {
@@ -155,8 +158,11 @@
             margin-bottom: 5px;
             background: transparent;
             padding: 10px 0px;
+        }
+        #captcha {
+            align-items: center;
+            margin-left: 153px;
 
-            margin-left: 102px;
         }
         #error {
             color: red;
@@ -171,7 +177,14 @@
 </head>
 <body>
 <?php include 'header.html'; ?>
-<?php include '../dbConnection.php'; ?>
+<?php 
+include '../dbConnection.php'; 
+    if(isset($_POST["button"])) 
+    {
+        $klopt = false;
+        $isActive = false;
+    }
+    ?>
 
 <div id="login-geheel">
     <div id="login" align="middle">
@@ -204,7 +217,7 @@
                 }
             ?></tr>
 
-             <tr><td><div class="g-recaptcha" data-sitekey="6LdPJNkkAAAAANhpXvmFtM_J3itPQOxoJEBpBRWz"></div><td>
+             <tr><td><div class="g-recaptcha" id="captcha" data-sitekey="6LdPJNkkAAAAANhpXvmFtM_J3itPQOxoJEBpBRWz"></div><td>
             <?php
                     if (isset($_POST["button"])) {
                         if (empty($_POST["g-recaptcha-response"])) {
@@ -217,23 +230,20 @@
 
             <tr><td><button type="submit" name="button">Login</button></td>
 
+
             
             
             <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\registreer\index.php">Geen account</a></button></td></tr>
-            </table>
-        </form>
-    </div>
-</div>                            
+                       
 <?php 
                                 if(isset($_POST["button"])) {
                                     //$sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
 
-                                    $klopt = false;
                                     $email = $_POST["email"];
                                     $wachtwoord =$_POST["wachtwoord"];
 
                                     $result = $connect -> query("SELECT * FROM `klant` WHERE `klantEmail` = '".$email."' AND `klantWachtwoord` = '".md5($wachtwoord)."' AND `isActive` = '1' ");
-                                    $isActive = false;
+          
                                     if($result -> num_rows > 0 ){ 
                                         while($SQLs = $result -> fetch_assoc()) { 
                                             if($SQLs["isActive"] != 0) {
@@ -242,23 +252,32 @@
                                             }
                                         }
                                     }
-
-                                    if($klopt == true) {
-                                        echo "Je bent ingelogd!"; }
-
-                                    else {
-                                        if($isActive) {
-                                            echo "Je bent NIET ingelogd! ".$connect->error;
-                                        }else {
-                                            echo "Je moet je account nog activeren. Check je email!";     
-                                        }
-                                        
-                                    }   
                                 }
 
-                                 
+                                  
                         
 ?>
+                <tr><td><div> 
+<?php
+                            if(isset($_POST["button"])) {
+                                if($klopt == true) {
+                                    echo "Je bent ingelogd!"; 
+                                }
+
+                                else {
+                                    if($isActive) {
+                                        echo "Je bent NIET ingelogd! ".$connect->error;
+                                    }else {
+                                        echo "Je moet je account nog activeren. Check je email!";     
+                                    }
+                                        
+                                } 
+                            }  
+?>              </div></td>
+            </table>
+        </form>
+    </div>
+</div>  
 <?php include 'footer.html'; ?>
 </body>
 </html>
