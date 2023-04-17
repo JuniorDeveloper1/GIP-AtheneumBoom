@@ -187,18 +187,18 @@
         <div id="producten-horloges">
 
         <div class="box" id="box1">
-           <a href="../nl/producten-php/heren_ring.php"><div id="background-color">  <span id="producten-text">Verlovingsringen</span></div></a>
-            <img id="foto" src="./images/producten-images/ringen/Royal_Ring_Verlovingsring_silver.png" id="imageHorloge">
+           <a href="../nl/producten-php/heren_ring.php"><div id="background-color">  <span id="producten-text">Herenringen</span></div></a>
+            <img  src="./images/producten-images/ringen/heren_ringen/Royal_Ring_Herenring_Roman_Ring.jpg" width="400" height="400">
         </div>
         
         <div class="box" id="box2">
              <a href="../nl/producten-php/horloges.php"> <div id="background-color">  <span id="producten-text">Horloges</span></div></a>
-                <img id="foto" src="./images/producten-images/horloges/Royal_Ring_Horloge_Citizen_1.png">
+                <img  src="./images/producten-images/horloges/Royal_Ring_Horloge_Citizen_1.png" width="400" height="400">
         </div>
 
         <div class="box" id="box3">
-            <a href="../nl/producten-php/trouw_ring.php"><div id="background-color"><span id="producten-text">Trouwringen</span></div></a>
-            <img id="foto" src="./images/producten-images/ringen/Royal_Ring_Trouwring_GoudSilver.png">
+            <a href="../nl/producten-php/vrouwen_ring.php"><div id="background-color"><span id="producten-text">Vrouwenringen</span></div></a>
+            <img src="./images/producten-images/ringen/vrouwen_ringen/Royal_Ring_Ring_Vrouwenring_Diamond_1.jpg" width="400" height="400">
         </div>
          </div>
     </div> 
