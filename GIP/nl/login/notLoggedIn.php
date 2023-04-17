@@ -82,7 +82,10 @@
         }
 
         .g-recaptcha {
-            margin-left: 70px;
+            margin-left: 100px;
+            transform:scale(0.77) ;
+            transform-origin:0 0 ;
+
         }
 
 }
@@ -176,15 +179,19 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<?php include 'header.html'; ?>
 <?php 
-include '../dbConnection.php'; 
+    include '..\header.html'; 
+ ?>
+
+<?php 
+include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
     if(isset($_POST["button"])) 
     {
         $klopt = false;
         $isActive = false;
     }
     ?>
+
 
 <div id="login-geheel">
     <div id="login" align="middle">
@@ -238,15 +245,17 @@ include '../dbConnection.php';
 <?php 
                                 if(isset($_POST["button"])) {
                                     //$sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
-
                                     $email = $_POST["email"];
                                     $wachtwoord =$_POST["wachtwoord"];
-
                                     $result = $connect -> query("SELECT * FROM `klant` WHERE `klantEmail` = '".$email."' AND `klantWachtwoord` = '".md5($wachtwoord)."' AND `isActive` = '1' ");
           
                                     if($result -> num_rows > 0 ){ 
                                         while($SQLs = $result -> fetch_assoc()) { 
                                             if($SQLs["isActive"] != 0) {
+                                                $_SESSION["klantID"] = $SQLs["klantID"];
+                                                $_SESSION["klantVoornaam"] = $SQLs["klantVoornaam"];
+                                                $_SESSION["klantGebruikersnaam"] = $SQLs["klantGebruikersnaam"];
+                                                $_SESSION["kantEmail"] = $SQLs["klantEmail"];   
                                                 $klopt = true;
                                                 $isActive = true;
                                             }
@@ -260,15 +269,14 @@ include '../dbConnection.php';
                 <tr><td><div> 
 <?php
                             if(isset($_POST["button"])) {
-                                if($klopt == true) {
-                                    echo "Je bent ingelogd!"; 
-                                }
-
+                                if($klopt == true) {echo "Je bent ingelogd!"; $_SESSION["loggedIn"] = true;}
                                 else {
                                     if($isActive) {
                                         echo "Je bent NIET ingelogd! ".$connect->error;
+                                        $_SESSION["loggedIn"] = false;
                                     }else {
-                                        echo "Je moet je account nog activeren. Check je email!";     
+                                        echo "Je account bestaat nog niet!"; 
+                                        $_SESSION["loggedIn"] = false;    
                                     }
                                         
                                 } 
@@ -278,6 +286,6 @@ include '../dbConnection.php';
         </form>
     </div>
 </div>  
-<?php include 'footer.html'; ?>
+<?php include '../footer.html'; ?>
 </body>
 </html>
