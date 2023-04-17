@@ -84,6 +84,7 @@ span#error {
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
     $errors = true;
+    $_SESSION["loggedIn"]=false;
 ?>
 
 <div id="registreer-geheel">
@@ -145,25 +146,27 @@ span#error {
             <tr> 
                 <td> <input type="email" placeholder="Email" name="klantEmail"> </td>
 
-                <td><?php 
-            if(isset($_POST["button"])) {
-                if(!empty($_POST["klantEmail"])) {
-                    $errors = false;
-                    $_SESSION["klantSession"] = $_POST["klantEmail"];
-                } else {
-                    echo "<span id='error'>"." Vul uw email in!";
-                    $errors = true;
+                <td>
+<?php 
+                if(isset($_POST["button"])) {
+                    if(!empty($_POST["klantEmail"])) {
+                        $errors = false;
+                        $_SESSION["klantSession"] = $_POST["klantEmail"];
+                    } else {
+                        echo "<span id='error'>"." Vul uw email in!";
+                        $errors = true;
+                    }
+
+                    $emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["klantEmail"]."'";
+                    $emailResult =  $connect -> query($emailSQL);
+                    $emailExists = false;
+                    if($emailResult -> num_rows > 0) {$emailExists = true;}
+                                                else {$emailExists = false;}
+
+
                 }
-
-                $emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["klantEmail"]."'";
-                $emailResult =  $connect -> query($emailSQL);
-                $emailExists = false;
-                if($emailResult -> num_rows > 0) {$emailExists = true;}
-                                            else {$emailExists = false;}
-
-
-            }
-            ?></td>
+?>
+                </td>
             </tr>
 
             <!--Klantwachtwoord 1 -->
