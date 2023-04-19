@@ -45,7 +45,7 @@
 
 
         button {
-        background-color: rgb(38, 39, 43);
+            background-color: rgb(38, 39, 43);
         color: rgb(115, 115, 115);
         height: 30px;
         margin-top: 10px;
@@ -185,10 +185,12 @@
 
 <?php 
 include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
+
     if(isset($_POST["button"])) 
     {
         $klopt = false;
         $isActive = false;
+       
     }
     ?>
 
