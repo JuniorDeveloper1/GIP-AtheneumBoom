@@ -410,24 +410,36 @@
                             echo $id."<br>";
                          
             if(isset($_POST["addtocartButton"])){
-                if($klantID != 0 || $amount != 0) {
-                    $connect -> 
-                    query(
-                        "INSERT INTO `royalring`.`winkelkar` 
-                        (`winkelkarID` ,
-                        `klantID` ,
-                        `ArtikelID` ,
-                        `Aantal`) 
-                        VALUES 
-                        (NULL,
-                        '".$klantID."',
-                        '".$id."',
-                        '".$amount."'
-                        );"
-                    );
-                } else {
-                    echo "Er is een probleem! Contacteer een medewerker!";
-                }
+              
+
+                    if($result ->  num_rows > 0) {
+                        $results = $result->fetch_assoc();
+                        $nieuwAantal = $results["Aantal"] + $aantal;
+                        $winkelkarID = $row["winkelkarID"];
+                        $query = "UPDATE winkelkar SET Aantal = $nieuwAantal WHERE winkelkarID = $winkelkarID";
+                        $connect->query($query);
+                    }else {
+                        if($klantID != 0 || $amount != 0) {
+                            $connect -> 
+                            query(
+                                "INSERT INTO `royalring`.`winkelkar` 
+                                (`winkelkarID` ,
+                                `klantID` ,
+                                `ArtikelID` ,
+                                `Aantal`) 
+                                VALUES 
+                                (NULL,
+                                '".$klantID."',
+                                '".$id."',
+                                '".$amount."'
+                                );"
+                            );
+                        } else {
+                            echo "Er is een probleem! Contacteer een medewerker!";
+                        }
+
+                    }
+
 
 
 
