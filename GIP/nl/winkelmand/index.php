@@ -176,6 +176,9 @@
 
                 }
             }
+
+
+            
             
 
 
@@ -252,7 +255,6 @@
             $winkelkarID = $_POST['winkelkarID'];
             $deleteSQL = "DELETE FROM winkelkar WHERE winkelkarID = $winkelkarID AND klantID = $klantID";
             $deleteResult = $connect->query($deleteSQL);
-        
         }
 
 

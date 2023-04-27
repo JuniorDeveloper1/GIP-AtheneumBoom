@@ -9,18 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Pagina</title>
 </head>
-    <script>
-        var open = false;
-        function showDescription() {
-            if(!open) {
-                open = true;
-                 document.getElementById("description-span").style.display = "block";
-            }else{
-                document.getElementById("description-span").style.display = "none";
-                open = false;
-            }
-        }
-    </script>
 <style> 
     @media only screen and (min-width: 900px) { 
 
@@ -335,7 +323,11 @@
 
        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');                 
+       if(isset($_SESSION["klantID"]) && $_SESSION["klantID"] == true){
         $klantID = $_SESSION["klantID"];
+       }else {
+        $klantID = -1;
+       }
         if(isset($_POST["addtocartButton"])){
             $amount = $_POST["amountPHP"];
         }
@@ -356,6 +348,7 @@
 
     <!--Add something to cart variables->  KlantID = $_SESSION["klantID"], ArtikelID = $id, Aantal = $_POST["amountPHP"] -->
 <?php
+               if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true) {
                 echo "<div id='buyDiv'>";
                 echo "    <h2 id='buyDivTitle'>".$artikel["ArtikelNaam"]."</h2>";
                 echo "    <span id='buyDivPrice'>"."€".$artikel["Prijs"]."</span>";;
@@ -363,7 +356,8 @@
                 echo "    <button id='buyDivAddToCart' name='addtocartButton'>";
                 echo "        Toevoegen aan mandje";
                 echo "</button>";
-            }
+
+            
                
 ?>
 
@@ -399,15 +393,32 @@
                 })
     
             </script>
+
+            <?php         
+           /**Else is het einde van $_SESSION["loggedIn"] & laatste } is van de while loop voor de artikelen te showen */    
+           /**
+            * This is the code if you're not logged in!
+            */
+            }else {
+                echo "<div id='buyDiv'>";
+                echo "    <h2 id='buyDivTitle'>".$artikel["ArtikelNaam"]."</h2>";
+                echo "    <span id='buyDivPrice'>"."€".$artikel["Prijs"]."</span>";;
+                echo "    <button id='buyDivAddToCart'>";
+
+                echo "        Login to buy!";
+                echo "</button>";
+               }
+            ?>
         </form>
          
 
 
 
 <?php 
-                            echo "WERKT2"."<br>";
-                            echo $klantID."<br>";
-                            echo $id."<br>";
+    /**  echo "WERKT2"."<br>";
+     echo $klantID."<br>";
+    echo $id."<br>";
+    */
                          
             if(isset($_POST["addtocartButton"])){
               
@@ -453,12 +464,24 @@
             echo "    <span id='description-span'> ".$artikel["groteOmschrijving"]."     </span></button>";
             echo " </div>";
 
-
             echo "</div>";
+        }
 
        
     }
 ?>
+    <script>
+        var open = true;
+        function showDescription() {
+            if(!open) {
+                open = true;
+                 document.getElementById("description-span").style.display = "block";
+            }else{
+                document.getElementById("description-span").style.display = "none";
+                open = false;
+            }
+        }
+    </script>
 <?php
        include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'; 
 ?>
