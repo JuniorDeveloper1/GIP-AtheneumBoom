@@ -125,7 +125,7 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
                 echo "<div id='three-row'>";
                 while($artikel = $result -> fetch_assoc()) {
                     if($artikel["CategorieID"] == 3) {
-                    echo "<a href='productenTest.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
+                    echo "<a href='producten.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
                     echo "<img src=".$artikel["imageURL"]."width='400' height='400'>";
                     echo "<a><span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br></a>";
                     echo "<span> €".$artikel["Prijs"]."</span> <br>";

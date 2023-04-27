@@ -123,7 +123,7 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
                 while($artikel = $result -> fetch_assoc()) {
                  
                 if($artikel["CategorieID"] == 2) {
-                        echo "<a href='productenTest.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
+                        echo "<a href='producten.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
                         echo "<img src=".$artikel["imageURL"]."id='productImage'>";
                         echo "<span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br>";
                         echo "<span> €".$artikel["Prijs"]."</span> <br>";
