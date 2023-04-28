@@ -1,3 +1,5 @@
+<?php if(session_status() !==  PHP_SESSION_ACTIVE) session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +9,24 @@
     <title>Document</title>
 </head>
 <body>
-<?php include('C:/USBWebserver/USBWebserver_Algemeen/root/GIP/nl/header.html')?>
+<?php    include '..\header.html'; 
+        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
+        include('./checkAdmin.php');
+
+        if( $_SESSION["isAdmin"] == TRUE) {
+           //Werk hier verder, je bent een admin.  
+?>
+
+
+
+
+<?php
+        } //This is the end of if($_SESSION["isAdmin"])
+?>
+
     
 
-<?php include('C:/USBWebserver/USBWebserver_Algemeen/root/GIP/nl/footer.html')?>
+<?php  include '..\footer.html';?>
     
 </body>
 </html>
