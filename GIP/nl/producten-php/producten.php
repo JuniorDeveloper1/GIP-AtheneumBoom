@@ -332,10 +332,20 @@
             $amount = $_POST["amountPHP"];
         }
    
-            
+    
+
+        $ItemAlreadyExist = "SELECT * FROM `winkelkar` 
+        WHERE `klantID` = '".$klantID."' AND `ArtikelID` = '".$id."'";
+       $ItemAlreadyExistSQL =  $connect ->  query($ItemAlreadyExist);
+
         
         $query = "SELECT * FROM producten WHERE ArtikelID = $id";
         $result = $connect -> query($query);
+
+      
+
+
+
         echo "<div id='three-row'>";
         if($result -> num_rows > 0) {
                 while($artikel = $result -> fetch_assoc()) {
@@ -421,40 +431,40 @@
     */
                          
             if(isset($_POST["addtocartButton"])){
-              
-
-                    if($result ->  num_rows > 0) {
-                        $results = $result->fetch_assoc();
-                        $nieuwAantal = $results["Aantal"] + $aantal;
-                        $winkelkarID = $row["winkelkarID"];
-                        $query = "UPDATE winkelkar SET Aantal = $nieuwAantal WHERE winkelkarID = $winkelkarID";
-                        $connect->query($query);
-                    }else {
                         if($klantID != 0 || $amount != 0) {
-                            $connect -> 
-                            query(
-                                "INSERT INTO `royalring`.`winkelkar` 
-                                (`winkelkarID` ,
-                                `klantID` ,
-                                `ArtikelID` ,
-                                `Aantal`) 
-                                VALUES 
-                                (NULL,
-                                '".$klantID."',
-                                '".$id."',
-                                '".$amount."'
-                                );"
-                            );
-                        } else {
-                            echo "Er is een probleem! Contacteer een medewerker!";
-                        }
+                            if($ItemAlreadyExistSQL -> num_rows > 0) {
 
-                    }
-
-
-
-
-
+                                while($SQL = $ItemAlreadyExistSQL -> fetch_assoc()) {
+                                    $nieuwtotaal = $amount + $SQL["Aantal"];
+                                    if($nieuwtotaal > 20) {
+                                        $nieuwtotaal = 20;
+                                    }
+                                }
+                    
+                                $connect -> 
+                                query("UPDATE `winkelkar` 
+                                SET `Aantal` = '".$nieuwtotaal."' 
+                                WHERE `klantID` = '".$klantID."' 
+                                AND `ArtikelID` = '".$id."'");
+                            }else {
+           
+                                $connect -> 
+                                query(
+                                    "INSERT INTO `royalring`.`winkelkar` 
+                                    (`winkelkarID` ,
+                                    `klantID` ,
+                                    `ArtikelID` ,
+                                    `Aantal`) 
+                                    VALUES 
+                                    (NULL,
+                                    '".$klantID."',
+                                    '".$id."',
+                                    '".$amount."'
+                                    );"
+                                );
+                            }
+                           
+                        } 
             }
 ?>
 

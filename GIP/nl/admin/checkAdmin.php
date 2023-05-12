@@ -12,7 +12,7 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
             while($admin = $adminResult -> fetch_assoc()) { 
                 if(($admin["isAdmin"] == 1))
                 {
-                echo "Je bent een admin!";
+               // echo "Je bent een admin!";
                 $_SESSION["isAdmin"] = true;
                 }else {
                     echo "Je bent geen admin.";
@@ -28,8 +28,4 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
     }else {
         echo "You're not logged in!";
     }
-    
-   
-    
-
 ?>

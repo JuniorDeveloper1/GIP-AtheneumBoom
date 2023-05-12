@@ -256,6 +256,7 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
                                             if($SQLs["isActive"] != 0) {
                                                 $_SESSION["klantID"] = $SQLs["klantID"];
                                                 $_SESSION["klantVoornaam"] = $SQLs["klantVoornaam"];
+                                                $_SESSION["klantAchternaam"] = $SQLs["klantAchternaam"];
                                                 $_SESSION["klantGebruikersnaam"] = $SQLs["klantGebruikersnaam"];
                                                 $_SESSION["kantEmail"] = $SQLs["klantEmail"];   
                                                 $klopt = true;

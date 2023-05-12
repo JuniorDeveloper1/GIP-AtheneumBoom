@@ -12,7 +12,7 @@
     <title>Email comfirmen</title>
 
     <style> 
-        @media  only screen and (min-width: 825.33px){
+    @media  only screen and (min-width: 825.33px){
             #registreer-geheel, #login-geheel {
 
         width: 100%;
