@@ -19,8 +19,8 @@ $name = $_GET["databaseName"];
 
     <!--Werk met header(location: index.php); om de user terug te sturen naar de hoofdpagina-->
     <?php
-include '..\header.html'; 
-include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
+include '../modules/header.php'; 
+include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
 include './checkAdmin.php';
 
 function getIDName($tablename) {
@@ -103,7 +103,7 @@ echo "</div>";
 
 ?>
 
-<?php include '..\footer.html';?>
+<?php include '../modules/footer.html';?>
     
 
 </html>

@@ -1,5 +1,5 @@
 <?php 
-include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
+  include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
 $klantDisplay = "SELECT * FROM klant";
 $klantDisplaySQL = $connect -> query($klantDisplay);
 

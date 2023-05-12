@@ -168,8 +168,7 @@
     </style>
 </head>
 <body>
-<?php    include '..\header.html'; 
-        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
+<?php    include '../modules/header.php'; 
         include('./checkAdmin.php');
         include('./adminSQL.php');
         
@@ -289,34 +288,34 @@
 
 
             <div id="admin_content_producten"> 
-            <table>
-                    <tr id="admin_content_prducten_table_tr">
-                     <td>ArtikelID</td> <td>Artikel Naam</td> <td>Prijs </td> <td>image</td> <td>Korting</td> <td>Categorie ID</td>
-                     <td>Action</td>
-                    </tr>
-                    <?php 
-                    //10
-                        echo "<tr>";
-                        if($productenDisplaySQL -> num_rows > 0) {
-                            while($artikelen = $productenDisplaySQL -> fetch_assoc()) { 
-                                echo " <tr> <td>".$artikelen["ArtikelID"]."</td>  ";
-                                echo "  <td>".$artikelen["ArtikelNaam"]."</td>  ";
-                                echo " <td>".$artikelen["Prijs"]."</td> ";
-                                echo " <td>"."<img src=".$artikelen["imageURL"]."id='productImage'>"."</td> ";
-                                echo " <td>".$artikelen["Korting"]."</td> ";
-                                echo " <td>".$artikelen["CategorieID"]."</td> ";
-                                echo "
-                                <td class='test'>  
-                                <a href='edit.php?id=".$artikelen["ArtikelID"]."&databaseName=".$producten."'><input type='submit' name='edit' id='edit' value='edit'></a>
-                                <a href='delete.php?id=".$artikelen["ArtikelID"]."&databaseName=".$producten."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
-                                //TODO: Add these values into an session so we can use it.
-                               echo " </tr>";
-                                ?>
-                                <?php
+                <table>
+                        <tr id="admin_content_prducten_table_tr">
+                        <td>ArtikelID</td> <td>Artikel Naam</td> <td>Prijs </td> <td>image</td> <td>Korting</td> <td>Categorie ID</td>
+                        <td>Action</td>
+                        </tr>
+                        <?php 
+                        //10
+                            echo "<tr>";
+                            if($productenDisplaySQL -> num_rows > 0) {
+                                while($artikelen = $productenDisplaySQL -> fetch_assoc()) { 
+                                    echo " <tr> <td>".$artikelen["ArtikelID"]."</td>  ";
+                                    echo "  <td>".$artikelen["ArtikelNaam"]."</td>  ";
+                                    echo " <td>".$artikelen["Prijs"]."</td> ";
+                                    echo " <td>"."<img src=".$artikelen["imageURL"]."id='productImage'>"."</td> ";
+                                    echo " <td>".$artikelen["Korting"]."</td> ";
+                                    echo " <td>".$artikelen["CategorieID"]."</td> ";
+                                    echo "
+                                    <td class='test'>  
+                                    <a href='edit.php?id=".$artikelen["ArtikelID"]."&databaseName=".$producten."'><input type='submit' name='edit' id='edit' value='edit'></a>
+                                    <a href='delete.php?id=".$artikelen["ArtikelID"]."&databaseName=".$producten."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
+                                    //TODO: Add these values into an session so we can use it.
+                                echo " </tr>";
+                                    ?>
+                                    <?php
+                                }
                             }
-                        }
-                        echo "</tr>";?>
-                </table>
+                            echo "</tr>";?>
+                    </table>
 
             </div>
 
@@ -326,7 +325,7 @@
                 <table>
                     <tr id="admin_content_prducten_table_tr">
                         <td>CategorieID</td> <td>CategorieNaam</td> <td>Action</td>
-            <?php 
+             <?php 
                     //10
                         echo "<tr>";
                         if($producten_categorieDisplaySQL -> num_rows > 0) {
@@ -350,31 +349,31 @@
 
 
             <div id="admin_content_winkelmandje"> 
-            <table>
-                    <tr id="admin_content_winkelmandje_tr">
-                        <td>winkelkarID</td> <td>klantID</td> <td>ArtikelID</td> <td>Aantal</td><td>Action</td>
-            <?php 
-                    //10
-                        echo "<tr>";
-                        if($winkelmandDisplaySQL -> num_rows > 0) {
-                            while($artikelen = $winkelmandDisplaySQL -> fetch_assoc()) { 
-                                echo " <tr> <td>".$artikelen["winkelkarID"]."</td>  ";
-                                echo "  <td>".$artikelen["klantID"]."</td>  ";
-                                echo "  <td>".$artikelen["ArtikelID"]."</td>  ";
-                                echo "  <td>".$artikelen["Aantal"]."</td>  ";
-                                echo 
-                                "
-                                <td class='test'>  
-                                <a href='edit.php?id=".$artikelen["winkelkarID"]."&databaseName=".$winkelkar."'><input type='submit' name='edit' id='edit' value='edit'></a>
-                                <a href='delete.php?id=".$artikelen["winkelkarID"]."&databaseName=".$winkelkar."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
-                               echo " </tr>";
-                                ?>
-                                <?php
+                <table>
+                        <tr id="admin_content_winkelmandje_tr">
+                            <td>winkelkarID</td> <td>klantID</td> <td>ArtikelID</td> <td>Aantal</td><td>Action</td>
+                    <?php 
+                        //10
+                            echo "<tr>";
+                            if($winkelmandDisplaySQL -> num_rows > 0) {
+                                while($artikelen = $winkelmandDisplaySQL -> fetch_assoc()) { 
+                                    echo " <tr> <td>".$artikelen["winkelkarID"]."</td>  ";
+                                    echo "  <td>".$artikelen["klantID"]."</td>  ";
+                                    echo "  <td>".$artikelen["ArtikelID"]."</td>  ";
+                                    echo "  <td>".$artikelen["Aantal"]."</td>  ";
+                                    echo 
+                                    "
+                                    <td class='test'>  
+                                    <a href='edit.php?id=".$artikelen["winkelkarID"]."&databaseName=".$winkelkar."'><input type='submit' name='edit' id='edit' value='edit'></a>
+                                    <a href='delete.php?id=".$artikelen["winkelkarID"]."&databaseName=".$winkelkar."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
+                                echo " </tr>";
+                                    ?>
+                                    <?php
+                                }
                             }
-                        }
-                        echo "</tr>";?>
-                        </tr>
-                </table>
+                            echo "</tr>";?>
+                            </tr>
+                    </table>
             </div>
 
 
@@ -391,7 +390,7 @@
 
     
 
-<?php  include '..\footer.html';?>
+<?php  include '../modules/footer.html';?>
     
 </body>
 </html>

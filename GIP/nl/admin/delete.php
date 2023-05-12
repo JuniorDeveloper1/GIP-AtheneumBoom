@@ -3,8 +3,7 @@
  * No html css needed. User will be instantly direct to index.php page.
  */
 
-
- include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
+ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
  include './checkAdmin.php';
  
  function getIDName($tablename) {
