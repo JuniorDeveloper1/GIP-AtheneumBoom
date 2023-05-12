@@ -26,12 +26,6 @@
       return $randomString;
    }
 
-
-
-  
-    include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
-    
-
         /**z
         We maken hier een variable token met een random token.
         Wij plaatsen deze token waar de klant zijn email gelijk aan de ontvanger is.

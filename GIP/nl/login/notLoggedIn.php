@@ -180,11 +180,11 @@
 </head>
 <body>
 <?php 
-    include '..\header.html'; 
+    include '../modules/header.php'; 
  ?>
 
 <?php 
-include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
+  include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
 
     if(isset($_POST["button"])) 
     {
@@ -256,6 +256,7 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
                                             if($SQLs["isActive"] != 0) {
                                                 $_SESSION["klantID"] = $SQLs["klantID"];
                                                 $_SESSION["klantVoornaam"] = $SQLs["klantVoornaam"];
+                                                $_SESSION["klantAchternaam"] = $SQLs["klantAchternaam"];
                                                 $_SESSION["klantGebruikersnaam"] = $SQLs["klantGebruikersnaam"];
                                                 $_SESSION["kantEmail"] = $SQLs["klantEmail"];   
                                                 $klopt = true;
@@ -288,6 +289,6 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
         </form>
     </div>
 </div>  
-<?php include '../footer.html'; ?>
+<?php include '../modules/footer.html'; ?>
 </body>
 </html>

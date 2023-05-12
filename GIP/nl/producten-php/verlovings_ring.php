@@ -105,7 +105,7 @@
 </head>
 <body>
 <?php 
-include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+include ('../modules/header.php');
 
 include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
@@ -150,6 +150,6 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
     <div id="floatBreaker"></div>
 
-    <?php include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'; ?>
+    <?php include '../modules/footer.html'; ?>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Winkelmand</title>
     <style> 
         #postform {
             background-color: #ECECEC;
@@ -139,9 +139,16 @@
 </head>
 <body>
 <?php 
-        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+        include ('../modules/header.php');
         include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
-        $klantID = $_SESSION["klantID"];
+      
+        if(isset($_SESSION["klantID"])== null) {
+            $klantID = -1;
+        }else {
+            $klantID = $_SESSION["klantID"];
+        }
+
+
             $winkelkarsql = "SELECT A1.winkelkarID, A1.klantID, A1.artikelID, A1.Aantal, A2.imageURL, A2.ArtikelNaam, A2.Prijs
                 FROM winkelkar A1 INNER JOIN producten A2 
                 ON A1.artikelID = A2.ArtikelID AND A1.klantID = $klantID;";
@@ -173,9 +180,11 @@
                     $price = $artikelen["Prijs"];
                     $itemTotal = $quantity * $price;
                     $totalPrice += $itemTotal;
-
                 }
             }
+
+
+            
             
 
 
@@ -235,14 +244,14 @@
 <?php 
         if($winkelkarResult -> num_rows > 0) {
             while($artikelen = $winkelkarResult -> fetch_assoc()) { 
-                $winkelkarID = $artikelen["winkelkarID"];
+                $winkelkarID = ;
                 echo "<tr id='table_items_tr'>";
                     echo "<td id='table_item' class='table_border' > <img src=".$artikelen["imageURL"]." width='100' height='100' id='table_product_image'></img></td>";
                     echo "<td id='table_name' class='table_border'><span id='table_naam_product'>".$artikelen["ArtikelNaam"]."</span></td>";
                     echo "<td id='table_hoeveelheid' class='table_border'>".$artikelen["Aantal"]."</td>";
                     echo "<td id='table_prijs' class='table_border'>€".$artikelen["Prijs"]."</td>";
                     echo "<td id='table_totaal' class='table_border'>€".$artikelen["Aantal"] * $artikelen["Prijs"]."</td>";
-                    echo "<td class='table_border' ><input type='hidden' name='winkelkarID' value='".$winkelkarID."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></td>";
+                    echo "<td class='table_border' ><input type='hidden' name='winkelkarID' value='".$artikelen["winkelkarID"]."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></td>";
                 echo "</tr>";
             }
         }
@@ -252,7 +261,6 @@
             $winkelkarID = $_POST['winkelkarID'];
             $deleteSQL = "DELETE FROM winkelkar WHERE winkelkarID = $winkelkarID AND klantID = $klantID";
             $deleteResult = $connect->query($deleteSQL);
-        
         }
 
 
@@ -277,7 +285,7 @@
 
 
 <?php
-        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html');
+        include ('../modules/footer.html');
 ?>
     
 </body>
