@@ -12,7 +12,7 @@
 
 <?php
 
-        if($_SESSION["loggedIn"] == false) {
+        if( $_SESSION["loggedIn"] == false) {
             include("./notLoggedIn.php");
         }else {
             include("./loggedIn.php");
