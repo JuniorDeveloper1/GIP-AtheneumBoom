@@ -253,7 +253,8 @@
                     echo "<td id='table_totaal' class='table_border'>€".$artikelen["Aantal"] * $artikelen["Prijs"]."</td>";
                     echo "<td class='table_border' ><input type='hidden' name='winkelkarID' value='".$artikelen["winkelkarID"]."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></td>";
                 echo "</tr>";
-            }
+                }
+            
         }
 
 
