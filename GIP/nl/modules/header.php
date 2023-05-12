@@ -403,7 +403,7 @@
         <div class="inner_head">
             <div id="inner_head_logo">
                 <div>
-                <a href="../nl/index.php"><img src="../images/Royal_Ring_Logo.svg" id="logo" width="120" height="120"></a>
+                <a href="../index/index.php"><img src="../images/Royal_Ring_Logo.svg" id="logo" width="120" height="120"></a>
                 </div>
         
             </div>

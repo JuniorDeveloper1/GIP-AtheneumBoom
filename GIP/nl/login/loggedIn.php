@@ -39,36 +39,36 @@
 
 
     <?php
-     include '..\header.html'; 
+     include '../modules/header.php'; 
    
      ?>
     <form name="form" method="POST">
-    <div id="login" align="middle">
-        <?php
-        echo "Je bent ingelogd!"."<br>";
-        echo "KlantID: ".$_SESSION['klantID']."<br>";
-        echo "Voornaam: ".$_SESSION['klantVoornaam']."<br>";
-        echo "Achternaam: ".$_SESSION['klantAchternaam']."<br>";
-        echo "Gebruikersnaam: ".$_SESSION['klantGebruikersnaam']."<br>"  ;
-        echo "Email: ".$_SESSION['kantEmail']."<br>" ;
+            <div id="login" align="middle">
+                <?php
+                echo "Je bent ingelogd!"."<br>";
+                echo "KlantID: ".$_SESSION['klantID']."<br>";
+                echo "Voornaam: ".$_SESSION['klantVoornaam']."<br>";
+                echo "Achternaam: ".$_SESSION['klantAchternaam']."<br>";
+                echo "Gebruikersnaam: ".$_SESSION['klantGebruikersnaam']."<br>"  ;
+                echo "Email: ".$_SESSION['kantEmail']."<br>" ;
+                ?>
+                
+                <button name="logOut" id="button">LOG OUT</button>
+        <?php 
+                    if(isset($_POST["logOut"])){
+                        $_SESSION["loggedIn"] = false;
+                        echo "Je bent uitgelogd!";
+                        unset($_SESSION["klantID"]);
+                        unset($_SESSION["klantVoornaam"]);
+                        unset( $_SESSION["klantAchternaam"]);
+                        unset($_SESSION["klantGebruikersnaam"]);
+                        unset($_SESSION["kantEmail"]);
+                    }
         ?>
-        
-        <button name="logOut" id="button">LOG OUT</button>
-<?php 
-            if(isset($_POST["logOut"])){
-                $_SESSION["loggedIn"] = false;
-                echo "Je bent uitgelogd!";
-                unset($_SESSION["klantID"]);
-                unset($_SESSION["klantVoornaam"]);
-                unset( $_SESSION["klantAchternaam"]);
-                unset($_SESSION["klantGebruikersnaam"]);
-                unset($_SESSION["kantEmail"]);
-            }
-?>
-    </div>
+            </div>
    
         <?php
-        include '..\footer.html'; 
+        include '../modules/footer.html'; 
         ?>
     </form>
 </body>

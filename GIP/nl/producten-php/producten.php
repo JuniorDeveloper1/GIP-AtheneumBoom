@@ -321,7 +321,7 @@
 <?php 
         $id = $_GET["productid"];
 
-       include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+       include ('../modules/header.php');
        include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');                 
        if(isset($_SESSION["klantID"]) && $_SESSION["klantID"] == true){
         $klantID = $_SESSION["klantID"];
@@ -493,7 +493,7 @@
         }
     </script>
 <?php
-       include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'; 
+       include '../modules/footer.html'; 
 ?>
 
 </body>

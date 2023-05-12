@@ -180,11 +180,11 @@
 </head>
 <body>
 <?php 
-    include '..\header.html'; 
+    include '../modules/header.php'; 
  ?>
 
 <?php 
-include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
+  include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
 
     if(isset($_POST["button"])) 
     {
@@ -289,6 +289,6 @@ include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php';
         </form>
     </div>
 </div>  
-<?php include '../footer.html'; ?>
+<?php include '../modules/footer.html'; ?>
 </body>
 </html>
