@@ -8,83 +8,80 @@
     <!--<link rel="stylesheet" href="./css/registerLogin.css"> -->
     <title>Registreer</title>
 
+<style>
+        #registreer-geheel, #login-geheel {
+            background-color:rgb(38, 39, 43);
+            color: rgb(115, 115, 115);
+        }
 
-    <style>
-#registreer-geheel, #login-geheel {
-    background-color:rgb(38, 39, 43);
-    color: rgb(115, 115, 115);
-}
+        #registreer, #login {
+            background-color: white;
+            color:  rgb(38, 39, 43);
+            align-items: center;
+            
+        }
 
-#registreer, #login {
-    background-color: white;
-    color:  rgb(38, 39, 43);
-    align-items: center;
-    
-}
+        h1{
+            text-align: center;
+            width: 100%;
+            height: auto;
+            float:left;
+            margin-left: 50px;
+        }
 
-h1{
-    text-align: center;
-    width: 100%;
-    height: auto;
-    float:left;
-    margin-left: 50px;
-}
+        #table{
+            border: none;
+            
+        }
 
-#table{
-    border: none;
-    
-}
+        td {
+            margin-bottom: 10px;
+        }
 
+        button {
+            background-color: rgb(38, 39, 43);
+            color: rgb(115, 115, 115);
+            height: 30px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 230px;
+            border-radius: 15px;
+            font-size: 20px;
+        }
 
-td {
-    margin-bottom: 10px;
-}
+        button:hover {
+            background-color: white;
+            transition-delay: 2ms;
+            border-radius: 30px;
+        }
 
+        #table input {
+            border: none;
+            border-bottom: 1px solid rgb(115, 115, 115);
+            outline: none;
+            width: 230px;
+            margin-bottom: 5px;
+            background: transparent;
+            padding: 10px 0px;
+        }
+        span#error {
+            color: red;
+            text-decoration: underline red;
 
-button {
-    background-color: rgb(38, 39, 43);
-    color: rgb(115, 115, 115);
-    height: 30px;
-    margin-top: 10px;
-    cursor: pointer;
-    width: 230px;
-    border-radius: 15px;
-    font-size: 20px;
-}
+        }
 
-button:hover {
-    background-color: white;
-    transition-delay: 2ms;
-    border-radius: 30px;
-}
-
-#table input {
-    border: none;
-    border-bottom: 1px solid rgb(115, 115, 115);
-    outline: none;
-    width: 230px;
-    margin-bottom: 5px;
-    background: transparent;
-    padding: 10px 0px;
-}
-span#error {
-    color: red;
-    text-decoration: underline red;
-
-}
-
-#test {
-    text-align: center;
-    
-}
-    </style>
+        #test {
+            text-align: center;
+            
+        }
+</style>
 </head>
 <body>
 <?php 
-    include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+    include ('../modules/header.php');
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
     $errors = true;
-    $_SESSION["loggedIn"]=false;
+   
 ?>
 
 <div id="registreer-geheel">
@@ -130,7 +127,8 @@ span#error {
             <!--Gebruikersnaam -->
             <tr>  
                 <td> <input type="text" placeholder="Gebruikersnaam" name="klantGebruikersnaam"> </td>
-                <td><?php 
+                <td>
+<?php 
             if(isset($_POST["button"])) {
                 if(!empty($_POST["klantGebruikersnaam"])) {
                     $errors = false;
@@ -139,7 +137,8 @@ span#error {
                     $errors = true;
                 }
             }
-            ?></td>
+?>
+                </td>
             </tr>
 
             <!--KlantEmail -->
@@ -173,7 +172,8 @@ span#error {
             <tr> 
                 <td> <input type="password" placeholder="Wachtwoord" name="klantWachtwoord"> </td>
 
-                <td><?php 
+                <td>
+<?php 
             if(isset($_POST["button"])) {
                 if(!empty($_POST["klantWachtwoord"])) {
                     $errors = false;
@@ -182,13 +182,15 @@ span#error {
                     $errors = true;
                 }
             }
-            ?></td>
+?>
+                  </td>
             </tr>
 
             <!--Wachtwoord 2 -->
             <tr> 
                 <td> <input type="password" placeholder="Herhaal Wachtwoord" name="wachtwoordTwee"> </td>
-                <td><?php 
+                <td>
+<?php 
             if(isset($_POST["button"])) {
                 if(!empty($_POST["wachtwoordTwee"])) {
                     if($_POST["klantWachtwoord"] != $_POST["wachtwoordTwee"]) {
@@ -202,17 +204,14 @@ span#error {
                     $errors = true;
                 }
             }
-            ?>
+?>
             </td>
             </tr>
 
             <tr><td colspan="2" id="test"><button type="submit" name="button">Registreer</button></td> </tr>
 
 
-            <?php
-           
-            
-
+<?php
             // Maak gebruiker
             if(isset($_POST["button"])) {
               
@@ -262,13 +261,13 @@ span#error {
                 }
                 */
             }
-       ?>
+?>
             </table>
         </form>
     </div>
 </div>
 
 
-<?php include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'); ?>
+<?php include ('../modules/footer.html'); ?>
 </body>
 </html>

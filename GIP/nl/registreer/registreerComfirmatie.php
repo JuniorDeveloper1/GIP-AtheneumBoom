@@ -12,7 +12,7 @@
     <title>Email comfirmen</title>
 
     <style> 
-        @media  only screen and (min-width: 825.33px){
+    @media  only screen and (min-width: 825.33px){
             #registreer-geheel, #login-geheel {
 
         width: 100%;
@@ -174,7 +174,7 @@
 
     <body>
     <?php 
-             include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');; 
+             include ('../modules/header.php');; 
              include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
             
         ?>
@@ -261,7 +261,7 @@
         </div>
     </div>
     <?php
-         include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html');;
+         include ('../modules/footer.html');;
 
     ?>
 

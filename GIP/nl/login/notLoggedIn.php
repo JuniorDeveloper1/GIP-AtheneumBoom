@@ -17,7 +17,7 @@
         color: rgb(115, 115, 115);
         }
 
-        #registreer, #login {
+        #registreer, #login{
         background-color: white;
         color:  rgb(38, 39, 43);
         align-items: center;
@@ -65,7 +65,7 @@
         border-radius: 30px;
         }
 
-        #table input {
+        #table input{
         border: none;
         border-bottom: 1px solid rgb(115, 115, 115);
         outline: none;
@@ -82,8 +82,25 @@
         }
 
         .g-recaptcha {
-            margin-left: 70px;
+            margin-left: 100px;
+            transform:scale(0.77) ;
+            transform-origin:0 0 ;
+
         }
+
+
+        #ww_vergeten  {
+            text-align: -webkit-center;
+
+            font-size: small;
+            line-break: 4px;
+
+            width: 230px;
+            background: transparent;
+            margin-left: 102px;
+        }
+
+        
 
 }
 
@@ -96,7 +113,7 @@
             color: rgb(115, 115, 115);
         }
 
-        #registreer, #login {
+        #registreer, #login, #ww_vergeten {
             background-color: white;
             color:  rgb(38, 39, 43);
             align-items: center;
@@ -169,6 +186,11 @@
             font-size: large;
         }
 
+        #ww_vergeten  {
+            text-align: -webkit-center;
+        }
+
+
 }
 
 
@@ -176,15 +198,21 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-<?php include 'header.html'; ?>
 <?php 
-include '../dbConnection.php'; 
+    include '../modules/header.php'; 
+ ?>
+
+<?php 
+  include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
+
     if(isset($_POST["button"])) 
     {
         $klopt = false;
         $isActive = false;
+       
     }
     ?>
+
 
 <div id="login-geheel">
     <div id="login" align="middle">
@@ -216,6 +244,7 @@ include '../dbConnection.php';
                     }
                 }
             ?></tr>
+            <tr><td><div id="ww_vergeten"><a href="#">Wachtwoord vergeten</a></div></td></tr>
 
              <tr><td><div class="g-recaptcha" id="captcha" data-sitekey="6LdPJNkkAAAAANhpXvmFtM_J3itPQOxoJEBpBRWz"></div><td>
             <?php
@@ -238,15 +267,18 @@ include '../dbConnection.php';
 <?php 
                                 if(isset($_POST["button"])) {
                                     //$sqlTokenCheck = "SELECT `klantEmail`,`klantToken` FROM `klant`";
-
                                     $email = $_POST["email"];
                                     $wachtwoord =$_POST["wachtwoord"];
-
                                     $result = $connect -> query("SELECT * FROM `klant` WHERE `klantEmail` = '".$email."' AND `klantWachtwoord` = '".md5($wachtwoord)."' AND `isActive` = '1' ");
           
                                     if($result -> num_rows > 0 ){ 
                                         while($SQLs = $result -> fetch_assoc()) { 
                                             if($SQLs["isActive"] != 0) {
+                                                $_SESSION["klantID"] = $SQLs["klantID"];
+                                                $_SESSION["klantVoornaam"] = $SQLs["klantVoornaam"];
+                                                $_SESSION["klantAchternaam"] = $SQLs["klantAchternaam"];
+                                                $_SESSION["klantGebruikersnaam"] = $SQLs["klantGebruikersnaam"];
+                                                $_SESSION["kantEmail"] = $SQLs["klantEmail"];   
                                                 $klopt = true;
                                                 $isActive = true;
                                             }
@@ -260,15 +292,14 @@ include '../dbConnection.php';
                 <tr><td><div> 
 <?php
                             if(isset($_POST["button"])) {
-                                if($klopt == true) {
-                                    echo "Je bent ingelogd!"; 
-                                }
-
+                                if($klopt == true) {echo "Je bent ingelogd!"; $_SESSION["loggedIn"] = true;}
                                 else {
                                     if($isActive) {
                                         echo "Je bent NIET ingelogd! ".$connect->error;
+                                        $_SESSION["loggedIn"] = false;
                                     }else {
-                                        echo "Je moet je account nog activeren. Check je email!";     
+                                        echo "Je account bestaat nog niet!"; 
+                                        $_SESSION["loggedIn"] = false;    
                                     }
                                         
                                 } 
@@ -278,6 +309,6 @@ include '../dbConnection.php';
         </form>
     </div>
 </div>  
-<?php include 'footer.html'; ?>
+<?php include '../modules/footer.html'; ?>
 </body>
 </html>

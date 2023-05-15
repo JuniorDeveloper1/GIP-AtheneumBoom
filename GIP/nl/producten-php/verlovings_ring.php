@@ -105,7 +105,7 @@
 </head>
 <body>
 <?php 
-include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\header.html');
+include ('../modules/header.php');
 
 include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
@@ -117,7 +117,7 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
     <div id="tussen">
         <?php 
-            $query = "SELECT * FROM verlovings_ringen;";
+            $query = "SELECT * FROM producten A1 INNER JOIN product_categorie A2 ON  A1.CategorieID = A2.CategorieID";
 
             $result = $connect -> query($query);
 
@@ -125,13 +125,14 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
                 echo "<div id='three-row'>";
                 while($artikel = $result -> fetch_assoc()) {
 
-                    $_SESSION["databaseProductLink"] = "verlovings_ringen";
-                    echo "<a href='productenTest.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
-                    echo "<img src=".$artikel["imageURL"]."id='productImage'>";
-                    echo "<a><span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br></a>";
-                    echo "<span> €".$artikel["Prijs"]."</span> <br>";
-                    echo "<span> ".$artikel["Omschrijving"]."</span>";
-                    echo "</div>";
+                   if($artikel["CategorieID"] == 4) {
+                        echo "<a href='producten.php?productid=".$artikel["ArtikelID"]."'><div id='product'>";
+                        echo "<img src=".$artikel["imageURL"]."id='productImage'>";
+                        echo "<a><span id='artikelNaam'>".$artikel["ArtikelNaam"]."</span> <br></a>";
+                        echo "<span> €".$artikel["Prijs"]."</span> <br>";
+                        echo "<span> ".$artikel["Omschrijving"]."</span>";
+                        echo "</div>";
+                   }
                 }
             }else {
                 echo "<h1 align='middle' STYLE='margin-left:30px'> NOG GEEN ARTIKKELEN TOEGEVOEGD </h1>";
@@ -149,6 +150,6 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
     <div id="floatBreaker"></div>
 
-    <?php include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\footer.html'; ?>
+    <?php include '../modules/footer.html'; ?>
 </body>
 </html>
