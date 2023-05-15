@@ -62,7 +62,8 @@
         #admin_nav_content_admin
         ,#admin_nav_content_producten
         ,#admin_nav_content_productcategorie
-        ,#admin_nav_content_winkelmandje{
+        ,#admin_nav_content_winkelmandje,
+        #admin_nav_content_promocode{
             border-bottom: 1px solid white;
 
             background-color: rgb(38, 39, 43);;
@@ -83,9 +84,15 @@
            
         }
 
-        #admin_content_klant_table_tr td, #admin_content_admin_table_tr td, #admin_content_prducten_table_tr td, #admin_content_admin_table_tr td, #admin_content_winkelmandje_tr td {
+        #admin_content_klant_table_tr td, #admin_content_admin_table_tr td, #admin_content_prducten_table_tr td, #admin_content_admin_table_tr td, #admin_content_winkelmandje_tr td, #admin_content_promo_code_tr td {
             border: 1px solid black;
             margin-left: 40px;
+        }
+
+        #add {
+           float: left;
+           margin-left: 5px;
+           margin-top: 5px;
         }
 
         #admin_content_klant {
@@ -97,7 +104,8 @@
         ,#admin_content_admin
         ,#admin_content_producten
         , #admin_content_productcategorie
-        ,#admin_content_winkelmandje {
+        ,#admin_content_winkelmandje,
+        #admin_content_promocode {
             display: none;
             text-align: -webkit-center;
         }
@@ -124,7 +132,8 @@
             padding: 0.5rem 1rem;
         }
 
-        #add, #editForm_savechanges {
+            /**#ECAB38**/
+        #add_button, #editForm_savechanges {
             background-color: #659BDF;
             outline: none;
             cursor: pointer;
@@ -179,6 +188,7 @@
         $producten = "producten";
         $product_catagorie = "product_categorie";
         $winkelkar = "winkelkar";
+        $promo_code = "promo_code";
 
         if( $_SESSION["isAdmin"] == TRUE) {
             $itemID = 0;
@@ -189,7 +199,7 @@
            //Werk hier verder, je bent een admin.  
 ?>
 
-        <div id="admin_nav">
+    <div id="admin_nav">
 
         <!-- -->
             <div id="admin_nav_naam"> 
@@ -208,6 +218,7 @@
                 <div id="admin_nav_content_admin"> Admin</div>
                 <div id="admin_nav_content_producten"> producten</div>
                 <div id="admin_nav_content_productcategorie"> product categorie</div>
+                <div id="admin_nav_content_promocode"> promo code</div>
                 <div id="admin_nav_content_winkelmandje"> winkelwandje</div>
             </div>
 
@@ -245,7 +256,7 @@
                                 echo 
                                 "
                                 <td class='test'>  
-                                <a href='edit.php?id=".$artikelen["klantID"]."&databaseName=".$klant."'><input type='submit' name='edit' id='edit' value='edit'></a>
+                                <a href='edit.php?id=".$artikelen["klantID"]."&databaseName=".$klant."s'><input type='submit' name='edit' id='edit' value='edit'></a>
                                 <a href='delete.php?id=".$artikelen["klantID"]."&databaseName=".$klant."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
                                echo " </tr>";
                                 ?>
@@ -255,6 +266,7 @@
                         echo "</tr>";?>
 
                 </table>
+                <?php echo  "<div id='add'><a href='add.php?databaseName=".$klant."'><button id='add_button'>Add User</button></a></div>";?>
             </div>
 
 
@@ -263,7 +275,7 @@
                     <tr id="admin_content_admin_table_tr">
                      <td>AdminID</td> <td>isAdmin</td> <td>klantID</td> <td>Action</td> 
                     </tr>
-                    <?php 
+                <?php 
                     //10
                         echo "<tr>";
                         if($adminDisplaySQL -> num_rows > 0) {
@@ -277,12 +289,13 @@
                                 <a href='edit.php?id=".$artikelen["AdminID"]."&databaseName=".$admin."'><input type='submit' name='edit' id='edit' value='edit'></a>
                                 <a href='delete.php?id=".$artikelen["AdminID"]."&databaseName=".$admin."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
                                echo " </tr>";
-                                ?>
+                ?>
                                 <?php
                             }
                         }
                         echo "</tr>";?>
                 </table>
+                <?php echo  "<div id='add'><a href='add.php?databaseName=".$admin."'><button id='add_button'>Add Admin</button></a></div>";?>
             </div>
 
 
@@ -317,6 +330,8 @@
                             echo "</tr>";?>
                     </table>
 
+                    <?php echo  "<div id='add'><a href='add.php?databaseName=".$producten."'><button id='add_button'>Add product</button></a></div>";?>
+
             </div>
 
 
@@ -345,6 +360,8 @@
                         echo "</tr>";?>
                         </tr>
                 </table>
+
+                <?php echo  "<div id='add'><a href='add.php?databaseName=".$product_catagorie."'><button id='add_button'>Add product categorie</button></a></div>";?>
             </div>
 
 
@@ -373,8 +390,38 @@
                             }
                             echo "</tr>";?>
                             </tr>
-                    </table>
+                </table>
+                    <?php echo  "<div id='add'><a href='add.php?databaseName=".$winkelkar."'><button id='add_button'>Add winkelmand</button></a></div>";?>
             </div>
+
+            <div id="admin_content_promocode"> 
+                <table>
+                        <tr id="admin_content_promocode_tr">
+                            <td>promoID</td> <td>PromoCode</td> <td>Promo_discount_percentage</td> 
+                    <?php 
+                        //10
+                            echo "<tr>";
+                            if($promoCodeDisplaySQL -> num_rows > 0) {
+                                while($artikelen = $promoCodeDisplaySQL -> fetch_assoc()) { 
+                                    echo " <tr> <td>".$artikelen["PromoID"]."</td>  ";
+                                    echo "  <td>".$artikelen["PromoCode"]."</td>  ";
+                                    echo "  <td>".$artikelen["Promo_discount_percentage"]."</td>  ";
+                                    echo 
+                                    "
+                                    <td class='test'>  
+                                    <a href='edit.php?id=".$artikelen["PromoID"]."&databaseName=".$promo_code."'><input type='submit' name='edit' id='edit' value='edit'></a>
+                                    <a href='delete.php?id=".$artikelen["PromoID"]."&databaseName=".$promo_code."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
+                                echo " </tr>";
+                                    ?>
+                                    <?php
+                                }
+                            }
+                            echo "</tr>";?>
+                            </tr>
+                </table>
+                    <?php echo  "<div id='add'><a href='add.php?databaseName=".$promo_code."'><button id='add_button'>Add promo code</button></a></div>";?>
+            </div>
+
 
 
 

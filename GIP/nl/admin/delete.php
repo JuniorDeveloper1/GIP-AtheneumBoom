@@ -24,6 +24,9 @@
          case 'winkelkar':
              $idField = 'winkelkarID';
              break;
+         case 'promo_code':
+            $idField = 'promoID';
+             break;
      }
      return $idField;
  }

@@ -11,12 +11,8 @@
 <?php //$_SESSION["loggedIn"]; ?>
 
 <?php
-
-<<<<<<< HEAD
-        if( $_SESSION["loggedIn"] == false) {
-=======
         if( $_SESSION["loggedIn"]== false) {
->>>>>>> admin
+
             include("./notLoggedIn.php");
         }else {
             include("./loggedIn.php");

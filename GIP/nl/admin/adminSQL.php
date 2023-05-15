@@ -15,6 +15,10 @@ $productenDisplaySQL = $connect -> query($productenDisplay);
 $producten_categorieDisplay = "SELECT * FROM product_categorie";
 $producten_categorieDisplaySQL = $connect -> query($producten_categorieDisplay);
 
+
+$promoCodeDisplay = "SELECT * FROM promo_code";
+$promoCodeDisplaySQL = $connect -> query($promoCodeDisplay);
+
 $winkelmandDisplay = "SELECT * FROM winkelkar";
 $winkelmandDisplaySQL = $connect -> query($winkelmandDisplay);
 
