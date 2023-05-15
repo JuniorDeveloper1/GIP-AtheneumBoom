@@ -244,7 +244,7 @@
 <?php 
         if($winkelkarResult -> num_rows > 0) {
             while($artikelen = $winkelkarResult -> fetch_assoc()) { 
-                $winkelkarID = ;
+                
                 echo "<tr id='table_items_tr'>";
                     echo "<td id='table_item' class='table_border' > <img src=".$artikelen["imageURL"]." width='100' height='100' id='table_product_image'></img></td>";
                     echo "<td id='table_name' class='table_border'><span id='table_naam_product'>".$artikelen["ArtikelNaam"]."</span></td>";
