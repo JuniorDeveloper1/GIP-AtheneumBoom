@@ -244,7 +244,7 @@
                     }
                 }
             ?></tr>
-            <tr><td><div id="ww_vergeten"><a href="#">Wachtwoord vergeten</a></div></td></tr>
+            <tr><td><div id="ww_vergeten"><a href="../password_lost/index.php">Wachtwoord vergeten</a></div></td></tr>
 
              <tr><td><div class="g-recaptcha" id="captcha" data-sitekey="6LdPJNkkAAAAANhpXvmFtM_J3itPQOxoJEBpBRWz"></div><td>
             <?php
