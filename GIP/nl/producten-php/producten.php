@@ -1,6 +1,6 @@
-<?php 
-    session_start();
-?>
+    <?php 
+        session_start();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -436,8 +436,8 @@
 
                                 while($SQL = $ItemAlreadyExistSQL -> fetch_assoc()) {
                                     $nieuwtotaal = $amount + $SQL["Aantal"];
-                                    if($nieuwtotaal > 20) {
-                                        $nieuwtotaal = 20;
+                                    if($nieuwtotaal > 3) {
+                                        $nieuwtotaal = 3;
                                     }
                                 }
                     

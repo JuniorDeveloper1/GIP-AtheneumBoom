@@ -1,9 +1,8 @@
 <?php if(session_status() !==  PHP_SESSION_ACTIVE) session_start();       
 include 'C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'; 
     
-    
+$_SESSION["isAdmin"] = false;
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true) {
-        $_SESSION["isAdmin"] = false;
         $klantID = $_SESSION["klantID"];
         $adminSQL = "SELECT isAdmin FROM Admin WHERE KlantID = $klantID";
         $adminResult =  $connect -> query($adminSQL);

@@ -17,7 +17,7 @@
         color: rgb(115, 115, 115);
         }
 
-        #registreer, #login {
+        #registreer, #login{
         background-color: white;
         color:  rgb(38, 39, 43);
         align-items: center;
@@ -45,7 +45,7 @@
 
 
         button {
-            background-color: rgb(38, 39, 43);
+        background-color: rgb(38, 39, 43);
         color: rgb(115, 115, 115);
         height: 30px;
         margin-top: 10px;
@@ -65,7 +65,7 @@
         border-radius: 30px;
         }
 
-        #table input {
+        #table input{
         border: none;
         border-bottom: 1px solid rgb(115, 115, 115);
         outline: none;
@@ -88,6 +88,20 @@
 
         }
 
+
+        #ww_vergeten  {
+            text-align: -webkit-center;
+
+            font-size: small;
+            line-break: 4px;
+
+            width: 230px;
+            background: transparent;
+            margin-left: 102px;
+        }
+
+        
+
 }
 
 @media  only screen and (max-width: 825.33px){
@@ -99,7 +113,7 @@
             color: rgb(115, 115, 115);
         }
 
-        #registreer, #login {
+        #registreer, #login, #ww_vergeten {
             background-color: white;
             color:  rgb(38, 39, 43);
             align-items: center;
@@ -172,6 +186,11 @@
             font-size: large;
         }
 
+        #ww_vergeten  {
+            text-align: -webkit-center;
+        }
+
+
 }
 
 
@@ -225,6 +244,7 @@
                     }
                 }
             ?></tr>
+            <tr><td><div id="ww_vergeten"><a href="../password_lost/index.php">Wachtwoord vergeten</a></div></td></tr>
 
              <tr><td><div class="g-recaptcha" id="captcha" data-sitekey="6LdPJNkkAAAAANhpXvmFtM_J3itPQOxoJEBpBRWz"></div><td>
             <?php
@@ -242,7 +262,7 @@
 
             
             
-            <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\registreer\index.php">Geen account</a></button></td></tr>
+            <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="../registreer/index.php">Geen account</a></button></td></tr>
                        
 <?php 
                                 if(isset($_POST["button"])) {

@@ -153,6 +153,9 @@
                 FROM winkelkar A1 INNER JOIN producten A2 
                 ON A1.artikelID = A2.ArtikelID AND A1.klantID = $klantID;";
             $winkelkarResult =  $connect -> query($winkelkarsql);
+
+
+            
             $totalPrice = 0;
 
             /**
@@ -244,7 +247,7 @@
 <?php 
         if($winkelkarResult -> num_rows > 0) {
             while($artikelen = $winkelkarResult -> fetch_assoc()) { 
-                $winkelkarID = ;
+                
                 echo "<tr id='table_items_tr'>";
                     echo "<td id='table_item' class='table_border' > <img src=".$artikelen["imageURL"]." width='100' height='100' id='table_product_image'></img></td>";
                     echo "<td id='table_name' class='table_border'><span id='table_naam_product'>".$artikelen["ArtikelNaam"]."</span></td>";
@@ -253,7 +256,8 @@
                     echo "<td id='table_totaal' class='table_border'>€".$artikelen["Aantal"] * $artikelen["Prijs"]."</td>";
                     echo "<td class='table_border' ><input type='hidden' name='winkelkarID' value='".$artikelen["winkelkarID"]."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></td>";
                 echo "</tr>";
-            }
+                }
+            
         }
 
 
