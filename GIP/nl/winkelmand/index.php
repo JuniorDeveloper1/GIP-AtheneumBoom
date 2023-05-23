@@ -153,6 +153,9 @@
                 FROM winkelkar A1 INNER JOIN producten A2 
                 ON A1.artikelID = A2.ArtikelID AND A1.klantID = $klantID;";
             $winkelkarResult =  $connect -> query($winkelkarsql);
+
+
+            
             $totalPrice = 0;
 
             /**
