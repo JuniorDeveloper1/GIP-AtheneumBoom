@@ -256,7 +256,7 @@
                                 echo 
                                 "
                                 <td class='test'>  
-                                <a href='edit.php?id=".$artikelen["klantID"]."&databaseName=".$klant."s'><input type='submit' name='edit' id='edit' value='edit'></a>
+                                <a href='edit.php?id=".$artikelen["klantID"]."&databaseName=".$klant."'><input type='submit' name='edit' id='edit' value='edit'></a>
                                 <a href='delete.php?id=".$artikelen["klantID"]."&databaseName=".$klant."'><input type='submit' id='delete' name='delete' value='delete'></a></td>";
                                echo " </tr>";
                                 ?>

@@ -262,7 +262,7 @@
 
             
             
-            <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="C:\USBWebserver\USBWebserver_GIP\root\GIP\nl\registreer\index.php">Geen account</a></button></td></tr>
+            <td><button type="submit" name="noAccButton" id="buttonRegister"> <a href="../registreer/index.php">Geen account</a></button></td></tr>
                        
 <?php 
                                 if(isset($_POST["button"])) {

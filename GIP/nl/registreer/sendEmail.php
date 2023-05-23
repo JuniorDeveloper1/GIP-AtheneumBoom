@@ -81,12 +81,15 @@
              $mail->Subject = $header;
 
             //$Bericht voor de BODY
+            $mail->Body = '<div style="background-color: #1f2041; padding: 20px; color: #ffffff; font-family: Arial, sans-serif;">
+            <h2 style="color: #ffffff;>Dit is het Management team van RoyalRing.</h2><br>
+            <p style="color: #ffffff;>Gebruik deze code in het registratie formulier!'.$token.'</p> <br> <br>
+              <a href="http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php"">
+                Klik op deze link voor jou code!
+              </a>!
+            </p>
+          </div>';
 
-             $mail->Body=               
-             "Dit is het Management team van royalring.  <br> <br>
-             Gebruik deze code in het registratie formulier! - Code: <h1>".$token.
-             "</h1> - U gebruikt de code in deze link!"."  <br> <br>
-             http://localhost:8080/GIP/nl/registreer/registreerComfirmatie.php";
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
          
              $mail->send();
