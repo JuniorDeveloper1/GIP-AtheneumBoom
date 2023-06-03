@@ -4,194 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- <link rel="stylesheet" href="./css/registerLogin.css"> -->
+   <link rel="stylesheet" href="./assest/notLoggedIn.css"> 
     <title>Login</title>
 
     <style>
-@media  only screen and (min-width: 825.33px){
-            #registreer-geheel, #login-geheel {
 
-        width: 100%;
-        height: 100%;
-        background-color:rgb(38, 39, 43);
-        color: rgb(115, 115, 115);
-        }
-
-        #registreer, #login{
-        background-color: white;
-        color:  rgb(38, 39, 43);
-        align-items: center;
-
-        margin-left: -140px;
-
-        }
-
-        h1{
-        text-align: center;
-        margin-left: 70px;
-        }
-
-        #table{
-        border: none;
-        margin: auto 0px;
-        align-items: center;
-
-        }
-
-
-        td {
-        margin-bottom: 10px;
-        }
-
-
-        button {
-        background-color: rgb(38, 39, 43);
-        color: rgb(115, 115, 115);
-        height: 30px;
-        margin-top: 10px;
-        cursor: pointer;
-        width: 115px;
-        border-radius: 15px;
-        margin-left: 77px;
-        }
-
-        #buttonRegister{
-        margin-left: -94px;
-        }
-
-        button:hover {
-        background-color: white;
-        transition-delay: 2ms;
-        border-radius: 30px;
-        }
-
-        #table input{
-        border: none;
-        border-bottom: 1px solid rgb(115, 115, 115);
-        outline: none;
-        width: 230px;
-        margin-bottom: 5px;
-        background: transparent;
-        padding: 10px 0px;
-
-        margin-left: 102px;
-        }
-        #error {
-            color: red;
-            font-size: large;
-        }
-
-        .g-recaptcha {
-            margin-left: 100px;
-            transform:scale(0.77) ;
-            transform-origin:0 0 ;
-
-        }
-
-
-        #ww_vergeten  {
-            text-align: -webkit-center;
-
-            font-size: small;
-            line-break: 4px;
-
-            width: 230px;
-            background: transparent;
-            margin-left: 102px;
-        }
-
-        
-
-}
-
-@media  only screen and (max-width: 825.33px){
-            #registreer-geheel, #login-geheel {
-
-            width: 100%;
-            height: 100%;
-            background-color:rgb(38, 39, 43);
-            color: rgb(115, 115, 115);
-        }
-
-        #registreer, #login, #ww_vergeten {
-            background-color: white;
-            color:  rgb(38, 39, 43);
-            align-items: center;
-
-            margin-left: -140px;
-            text-align: center;
-            
-        }
-
-        h1{
-            text-align: center;
-            width: 100%;
-            height: auto;
-            float:left;
-            margin-left: 50px;
-        }
-
-        #table{
-            text-align: center;
-            width: 100%;
-            height: auto;
-            float:left;
-            margin-left: 50px;
-            
-        }
-
-
-        td {
-            margin-bottom: 10px;
-        }
-
-
-        button {
-            background-color: rgb(38, 39, 43);
-            color: rgb(115, 115, 115);
-            height: 30px;
-            margin-top: 10px;
-            cursor: pointer;
-            width: 115px;
-            border-radius: 15px;
-            margin-left: -72px; 
-        }
-
-        #buttonRegister{
-            margin-left: -425px;
-        }
-
-        button:hover {
-            background-color: white;
-            transition-delay: 2ms;
-            border-radius: 30px;
-        }
-
-        #table input {
-            border: none;
-            border-bottom: 1px solid rgb(115, 115, 115);
-            outline: none;
-            width: 230px;
-            margin-bottom: 5px;
-            background: transparent;
-            padding: 10px 0px;
-        }
-        #captcha {
-            align-items: center;
-            margin-left: 153px;
-
-        }
-        #error {
-            color: red;
-            font-size: large;
-        }
-
-        #ww_vergeten  {
-            text-align: -webkit-center;
-        }
-
-
-}
 
 
 </style>
@@ -292,7 +109,10 @@
                 <tr><td><div> 
 <?php
                             if(isset($_POST["button"])) {
-                                if($klopt == true) {echo "Je bent ingelogd!"; $_SESSION["loggedIn"] = true;}
+                                if($klopt == true) {
+                                    echo "Je bent ingelogd!";
+                                     $_SESSION["loggedIn"] = true;
+                                     echo '<script>window.location.href = "index.php";</script>';}
                                 else {
                                     if($isActive) {
                                         echo "Je bent NIET ingelogd! ".$connect->error;

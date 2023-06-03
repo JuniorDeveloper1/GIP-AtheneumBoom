@@ -4,82 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assest/index.css">
     <title>Wachtwoord vergeten</title>
-
-    <style>
-        #password_vergeten_geheel{
-            width: 100%;
-            height: 100%;
-            background-color:rgb(38, 39, 43);
-            color: rgb(115, 115, 115);
-        }
-
-        #password_vergeten{
-            background-color: white;
-                color:  rgb(38, 39, 43);
-                align-items: center;
-
-                margin-left: -140px;
-                text-align: center;
-        }
-
-        #table{
-                text-align: center;
-                width: 100%;
-                height: auto;
-                float:left;
-                margin-left: 50px;
-                
-            }
-
-
-            td {
-                margin-bottom: 10px;
-            }
-
-
-            #table input {
-                border: none;
-                border-bottom: 1px solid rgb(115, 115, 115);
-                outline: none;
-                width: 230px;
-                margin-bottom: 5px;
-                background: transparent;
-                padding: 10px 0px;
-            }
-
-            h1{
-                text-align: center;
-                width: 100%;
-                height: auto;
-                float:left;
-                margin-left: 50px;
-            }
-
-
-            button {
-                background-color: rgb(38, 39, 43);
-                color: rgb(115, 115, 115);
-                height: 30px;
-                margin-top: 10px;
-                cursor: pointer;
-                width: 230px;
-                border-radius: 15px;
-            }
-
-
-
-    </style>
 </head>
 <body>
     <?php 
     
     include("../modules/header.php");
+    include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
+
     $klopt = false;
     
     ?>
         <div id="password_vergeten_geheel">
             <div id="password_vergeten" align="middle">
+
+
                 <form name="form" method="POST">
                     <h1>Wachtwoord vergeten</h1>
                     <table id="table">
@@ -97,8 +37,16 @@
                         <?php 
                             if(isset($_POST["button"])){
                                 if($klopt == true) {
+                                    /**
+                                     */
                                     $_SESSION["klantSession"] = $_POST["email"];
-                                    include "sendEmail.php";
+
+                                    $emailSQL = "SELECT `klantEmail` FROM `klant` WHERE `klantEmail` = '".$_POST["email"]."'";
+                                    $emailResult =  $connect -> query($emailSQL);
+                                    $emailExists = false;
+                                    if($emailResult -> num_rows > 0) {include("../password_lost/sendEmail.php");}
+                                                                else {echo " Email doesn't exist!";}
+                                    
                                 }
                             }
                         ?>

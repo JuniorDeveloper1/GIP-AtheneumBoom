@@ -1,0 +1,292 @@
+@media only screen and (max-width: 826px) {
+    #postform {
+        background-color: #ECECEC;
+    }
+    #table {
+        width: 70%;
+        height:100px;
+        /**margin: 0px auto;*/
+        border-spacing: 0;
+        background-color: white;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    
+    #table_names {
+        margin-top: 10px;
+    }
+    
+    .table_border{
+        border-bottom: 1px solid grey;
+    }
+    
+    span#table_naam_product{
+        line-height: 50px;
+    }
+    
+    #table_button_delete {
+        background-color: 	#ff7272;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        align-content: center;
+    }
+    #table_button_delete span {
+        vertical-align: sub;
+    
+    }
+    
+    #table_totaal{
+        border-left: 1px solid lightgrey;
+        border-left-width: 3px;
+        border-collapse: separate;
+    }
+    
+    #table_hoeveelheid,#table_prijs,#table_totaal,#table_names_center,#table_naam_product {
+        text-align: center;
+    }
+    
+    
+    #checkout {
+        background-color: white;
+        width: 100%;
+        margin-top: 5px;
+        text-align: -webkit-center; 
+        margin-bottom: 48px;   
+    }
+    
+    /**
+    background-color:rgb(38, 39, 43);
+    color: rgb(115, 115, 115); 
+    */
+    #checkout_promo span {
+        font-size: small;
+        color:  rgb(115, 115, 115);
+    }
+    
+    #checkout_promo_code {
+        width: 79%;
+        height: 30px;
+    }
+    
+    #checkout_promo_button {
+        width: 50%;
+        height: 34px;
+        background-color: rgb(38, 39, 43);
+        color: white;
+        border: none;
+        border-spacing: 0;
+        margin-left: -6px;
+    }
+    
+    #checkout_table {
+        margin-top: 5px;
+        width: 100%;
+    }
+    
+    #checkout_outcome {
+        text-align: right;
+    }
+    
+    #checkout_table_button{
+        text-align: -webkit-center;
+    }
+    
+    #checkout_table_button button {
+        width: 60%;
+        height: 40px;
+        background-color: rgb(38, 39, 43);
+        color: white;
+        border: 1px solid black;
+    }
+    
+    
+    #checkout_table_button button:hover {
+        width: 75%;
+        height: 40px;
+        background-color: white;
+        color: rgb(38, 39, 43);
+        border: 1px solid black;
+    }
+    
+    #floatbreaker_right{
+        clear: both;
+    }
+    
+    #test{
+        text-align: -webkit-right;
+    }
+    
+    .test {
+        font-size: small;
+    }
+    
+    #aantalValue {
+        text-align: center;
+        background: none;
+        border:none;
+        width: 30px;
+    }
+    
+    #decreaseAmount {
+        background: none;
+        border: none;
+    }
+    
+    #addAmount {
+        background: none;
+        border: none;
+    }
+    
+    
+}
+
+@media only screen and (min-width: 826px) {
+    #postform {
+        background-color: #ECECEC;
+    }
+    #table {
+        width: 70%;
+        height:100px;
+        /**margin: 0px auto;*/
+        border-spacing: 0;
+        background-color: white;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+    
+    #table_names {
+        margin-top: 10px;
+    }
+    
+    .table_border{
+        border-bottom: 1px solid grey;
+    }
+    
+    span#table_naam_product{
+        line-height: 50px;
+    }
+    
+    #table_button_delete {
+        background-color: 	#ff7272;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        align-content: center;
+    }
+    #table_button_delete span {
+        vertical-align: sub;
+    
+    }
+    
+    #table_totaal{
+        border-left: 1px solid lightgrey;
+        border-left-width: 3px;
+        border-collapse: separate;
+    }
+    
+    #table_hoeveelheid,#table_prijs,#table_totaal,#table_names_center,#table_naam_product {
+        text-align: center;
+    }
+    
+    
+    #checkout {
+        background-color: white;
+        width: 29%;
+        height: 210px;
+        float: right;
+        margin-top: 5px;
+    
+        
+    }
+    
+    /**
+    background-color:rgb(38, 39, 43);
+    color: rgb(115, 115, 115); 
+    */
+    #checkout_promo span {
+        font-size: small;
+        color:  rgb(115, 115, 115);
+    }
+    
+    #checkout_promo_code {
+        width: 79%;
+        height: 30px;
+    }
+    
+    #checkout_promo_button {
+        width: 20%;
+        height: 34px;
+        background-color: rgb(38, 39, 43);
+        color: white;
+        border: none;
+        border-spacing: 0;
+        margin-left: -6px;
+    }
+    
+    #checkout_table {
+        margin-top: 5px;
+        width: 100%;
+    }
+    
+    #checkout_outcome {
+        text-align: right;
+    }
+    
+    #checkout_table_button{
+        text-align: -webkit-center;
+    }
+    
+    #checkout_table_button button {
+        width: 60%;
+        height: 40px;
+        background-color: rgb(38, 39, 43);
+        color: white;
+        border: 1px solid black;
+    }
+    
+    
+    #checkout_table_button button:hover {
+        width: 75%;
+        height: 40px;
+        background-color: white;
+        color: rgb(38, 39, 43);
+        border: 1px solid black;
+    }
+    
+    #floatbreaker_right{
+        clear: both;
+    }
+    
+    #test{
+        text-align: -webkit-right;
+    }
+    
+    .test {
+        font-size: small;
+    }
+    
+    #aantalValue {
+        text-align: center;
+        background: none;
+        border:none;
+        width: 30px;
+    }
+    
+    #decreaseAmount {
+        background: none;
+        border: none;
+    }
+    
+    #addAmount {
+        background: none;
+        border: none;
+    }
+    
+    
+}
+

@@ -8,15 +8,18 @@
     <title>Login</title>
 </head>
 <body>
-<?php //$_SESSION["loggedIn"]; ?>
+
+
 
 <?php
-        if($_SESSION["loggedIn"]== false) {
 
-            include("./notLoggedIn.php");
-        }else {
-            include("./loggedIn.php");
-        
+
+        if ($_SESSION["loggedIn"] === false || $_SESSION["loggedIn"] === null) {
+            //include("./notLoggedIn.php");
+            header('Location: ./notLoggedIn.php');
+        } else {
+            header('Location: ./loggedIn.php');
+            //include("./loggedIn.php");
         }
 
 ?>
