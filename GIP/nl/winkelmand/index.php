@@ -1,3 +1,4 @@
+<?php if(session_status() !==  PHP_SESSION_ACTIVE) session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +47,12 @@
             $price = $artikelen["Prijs"];
             $itemTotal = $quantity * $price;
             $totalPrice += $itemTotal;
+
+            $btw = $totalPrice * 0.21;
+
+            $totalPrice += $btw;
+
+            $totalPrice = round($totalPrice, 2);
         }
     }
 ?>
@@ -61,9 +68,13 @@
                     </form>
             
                     <?php 
-                        $discountAmount = 0;
+                     $discountAmount = 0;
+                      
+                     
                         
                         if(isset($_POST["promoButton"])){
+                            
+                           
                             
                             $promoCode = $_POST["promoCode"];
                             $promoCodeSQL = "SELECT * FROM `promo_code` WHERE PromoCode = '$promoCode'";
@@ -72,7 +83,9 @@
                             if($promoCodeResult->num_rows > 0) {
                                 while($codes = $promoCodeResult->fetch_assoc()){
                                     if($codes["PromoCode"] == $promoCode) {
-                                        $discountAmount = $codes["Promo_discount_amount"];
+                                        $discountAmount += $codes["Promo_discount_amount"];
+                                        $_SESSION["discountTotal"] = $discountAmount;
+                                    
                                     }
                                 }
                             }
@@ -106,11 +119,33 @@
         <hr>
         <table id='checkout_table'>
              <tr>
-                <td>Total</td>
-                <td id='checkout_outcome'><?php echo "€".($totalPrice-$discountAmount) ?></td>
+                <td>Incl. BTW Totaal</td>
+                <td id='checkout_outcome'><?php echo "€";
+                
+                    if(($totalPrice - $discountAmount) < 0) {
+                        $discountAmount = $totalPrice;
+                    }else {
+                        $totalPrice-$discountAmount;
+                    }
+                
+                    
+                    echo ($totalPrice - $discountAmount );
+                    if(isset($_POST["promoButton"])){
+                        $_SESSION["totalPrice"] =  ($totalPrice - $_SESSION["discountTotal"]);
+                    }
+                     ?></td>
             </tr>
             <tr>
-                <td colspan='2' id='checkout_table_button'><button name='checkout_checkout_button'>Checkout</button></td>
+                <td colspan='2' id='checkout_table_button'><button name='checkout_checkout_button'>
+                    Checkout
+
+                    <?php 
+                        if(isset($_POST["checkout_checkout_button"])){
+                            echo "<script>window.location.href = '../bestelling/index.php?klantID=".$klantID."';</script>";
+                            
+                        }
+                    ?>
+                </button></td>
             </tr>
         </table>
     </div>
@@ -151,10 +186,11 @@
             echo "</td>";
 
 
+            $artikel = $artikelen["artikelID"];
 
             echo "<td id='table_prijs' class='table_border'>€".$artikelen["Prijs"]."</td>";
             echo "<td id='table_totaal' class='table_border'>€".$artikelen["Aantal"] * $artikelen["Prijs"]."</td>";
-            echo "<td class='table_border'><a href='delete.php?id=".$artikelen["winkelkarID"]."&klantNaam=".$klantID."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></a></td>";
+            echo "<td class='table_border'><a href='delete.php?id=".$artikelen["winkelkarID"]."&klantNaam=".$klantID."&artikelID=".$artikel."'><input type='submit' id='table_button_delete' name='table_delete' value='x'></a></td>";
             echo "</tr>";
         }
     }

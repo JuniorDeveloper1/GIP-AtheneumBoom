@@ -106,7 +106,7 @@
         float: right;
         margin-left: 50px;
         margin-top: 37px;
-        display: inline;
+        display: block-inline;
     }
 
     #menu_shopping div {
@@ -366,7 +366,7 @@
 
     #test {
         margin-left: 230px;
-        display: inline;
+        display: inline-block;
     }
 
     #menu_items_icons_float{

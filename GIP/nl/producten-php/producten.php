@@ -140,7 +140,7 @@
                                 $connect -> 
                                 query("UPDATE `winkelkar` 
                                 SET `Aantal` = '".$nieuwtotaal."' 
-                                WHERE `klantID` = '".$klantID."' 
+                                WHERE `winkelkarID` = '".$klantID."' 
                                 AND `ArtikelID` = '".$id."'");
                                 
                             }else {
@@ -153,7 +153,7 @@
                                     `ArtikelID` ,
                                     `Aantal`) 
                                     VALUES 
-                                    (NULL,
+                                    ($klantID,
                                     '".$klantID."',
                                     '".$id."',
                                     '".$amount."'

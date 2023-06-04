@@ -10,7 +10,11 @@
         +
         " Het goud en de diamanten dat zich op/in de horloge/ring bevind is echt."
         + 
-        " Er is geen gebruik gemaakt van koper, alles is gemaakt met metaal. ";
+        " Er is geen gebruik gemaakt van koper, alles is gemaakt met metaal. "
+        +
+        "<video width='150' height='150' controls> <source src='../images/videos/elevator_pitch_nick_debut.mp4' type='video/mp4'></video>"
+        +
+        "<video width='150' height='150' controls> <source src='../images/videos/website_rondleiding.mp4' type='video/mp4'></video>";
         //End Description
 
         xavier.innerHTML = 
@@ -52,7 +56,9 @@
         +
         " L'or et les diamants présents sur la montre/la bague sont authentiques."
         + 
-        " Aucun cuivre n'a été utilisé, tout est fait avec du métal. " ;
+        " Aucun cuivre n'a été utilisé, tout est fait avec du métal. "
+        +
+        "<video width='200' heigh='200' controls> <source src='../images/videos/elevator_pitch_nick_debut.mp4' type='video/mp4'></video>"; ;
         //End Description
 
         xavier.innerHTML = 
@@ -93,7 +99,9 @@
         +
         "The gold and diamonds on the watch/ring are authentic."
         + 
-        "No copper has been used, everything is made with metal. " ;
+        "No copper has been used, everything is made with metal. "
+        +
+        "<video width='200' heigh='200' controls> <source src='../images/videos/elevator_pitch_nick_debut.mp4' type='video/mp4'></video>";
         //End Description
 
         xavier.innerHTML = 
