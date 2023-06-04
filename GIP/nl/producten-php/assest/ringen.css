@@ -1,0 +1,50 @@
+
+.producten {
+    width: 400px;
+    height: auto;
+    margin-top: 130px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#producten-horloges {
+    background-size: cover;
+    float: left;
+    margin-left: 15px;
+    
+}
+#background-color {
+    background-color: black;
+    width: 400px;
+    height: 400px;
+    opacity: 0.5;
+    position: absolute;
+    text-align: center;
+}
+
+#background-color span {
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    line-height: 350px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+}
+
+#background-color:hover span {
+    display: none;
+}
+
+#box1 {
+    float:left;
+}
+
+#box2 {
+    margin: 0px 0px 0px 13px;
+    float: left
+}
+
+#box3 {
+    margin: 0px 0px 0px 828px;
+}

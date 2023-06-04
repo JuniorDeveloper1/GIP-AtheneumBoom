@@ -1,26 +1,24 @@
 <?php 
   include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
-$klantDisplay = "SELECT * FROM klant";
-$klantDisplaySQL = $connect -> query($klantDisplay);
+  $klantDisplay = "SELECT * FROM klant";
+  $klantDisplaySQL = $connect -> query($klantDisplay);
 
 
-$adminDisplay = "SELECT * FROM admin";
-$adminDisplaySQL = $connect -> query($adminDisplay);
+  $adminDisplay = "SELECT * FROM admin";
+  $adminDisplaySQL = $connect -> query($adminDisplay);
 
 
 
-$productenDisplay = "SELECT * FROM producten";
-$productenDisplaySQL = $connect -> query($productenDisplay);
+  $productenDisplay = "SELECT * FROM producten";
+  $productenDisplaySQL = $connect -> query($productenDisplay);
 
-$producten_categorieDisplay = "SELECT * FROM product_categorie";
-$producten_categorieDisplaySQL = $connect -> query($producten_categorieDisplay);
-
-
-$promoCodeDisplay = "SELECT * FROM promo_code";
-$promoCodeDisplaySQL = $connect -> query($promoCodeDisplay);
-
-$winkelmandDisplay = "SELECT * FROM winkelkar";
-$winkelmandDisplaySQL = $connect -> query($winkelmandDisplay);
+  $producten_categorieDisplay = "SELECT * FROM product_categorie";
+  $producten_categorieDisplaySQL = $connect -> query($producten_categorieDisplay);
 
 
+  $promoCodeDisplay = "SELECT * FROM promo_code";
+  $promoCodeDisplaySQL = $connect -> query($promoCodeDisplay);
+
+  $winkelmandDisplay = "SELECT * FROM winkelkar";
+  $winkelmandDisplaySQL = $connect -> query($winkelmandDisplay);
 ?>

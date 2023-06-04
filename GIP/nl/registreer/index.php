@@ -5,76 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="./css/registerLogin.css"> -->
+    <link rel="stylesheet" href="./assest/index.css"> 
     <title>Registreer</title>
 
-<style>
-        #registreer-geheel, #login-geheel {
-            background-color:rgb(38, 39, 43);
-            color: rgb(115, 115, 115);
-        }
 
-        #registreer, #login {
-            background-color: white;
-            color:  rgb(38, 39, 43);
-            align-items: center;
-            
-        }
-
-        h1{
-            text-align: center;
-            width: 100%;
-            height: auto;
-            float:left;
-            margin-left: 50px;
-        }
-
-        #table{
-            border: none;
-            
-        }
-
-        td {
-            margin-bottom: 10px;
-        }
-
-        button {
-            background-color: rgb(38, 39, 43);
-            color: rgb(115, 115, 115);
-            height: 30px;
-            margin-top: 10px;
-            cursor: pointer;
-            width: 230px;
-            border-radius: 15px;
-            font-size: 20px;
-        }
-
-        button:hover {
-            background-color: white;
-            transition-delay: 2ms;
-            border-radius: 30px;
-        }
-
-        #table input {
-            border: none;
-            border-bottom: 1px solid rgb(115, 115, 115);
-            outline: none;
-            width: 230px;
-            margin-bottom: 5px;
-            background: transparent;
-            padding: 10px 0px;
-        }
-        span#error {
-            color: red;
-            text-decoration: underline red;
-
-        }
-
-        #test {
-            text-align: center;
-            
-        }
-</style>
 </head>
 <body>
 <?php 
@@ -208,7 +142,7 @@
             </td>
             </tr>
 
-            <tr><td colspan="2" id="test"><button type="submit" name="button">Registreer</button></td> </tr>
+            <tr><td colspan="2" id="registreerButton"><button type="submit" name="button">Registreer</button></td> </tr>
 
 
 <?php

@@ -1,0 +1,26 @@
+
+#login {
+    align-content: center;
+}
+
+#button {
+    background-color: rgb(38, 39, 43);
+    color: rgb(115, 115, 115);
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 115px;
+    border-radius: 15px;
+}
+
+#button:hover {
+    border-color: rgb(38, 39, 43);
+
+    background-color: white;
+    color: rgb(115, 115, 115);
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 115px;
+    border-radius: 15px;
+}

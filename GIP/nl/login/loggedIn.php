@@ -4,36 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assest/loggedIn.css">
     <title>Login</title>
 
-    <style> 
-    #login {
-        align-content: center;
-    }
+<style> 
 
-    #button {
-        background-color: rgb(38, 39, 43);
-        color: rgb(115, 115, 115);
-        height: 30px;
-        margin-top: 10px;
-        cursor: pointer;
-        width: 115px;
-        border-radius: 15px;
-    }
-
-    #button:hover {
-        border-color: rgb(38, 39, 43);
-    
-        background-color: white;
-        color: rgb(115, 115, 115);
-        height: 30px;
-        margin-top: 10px;
-        cursor: pointer;
-        width: 115px;
-        border-radius: 15px;
-    }
-
-    </style>
+</style>
 </head>
 <body>
 
@@ -63,6 +39,7 @@
                         unset( $_SESSION["klantAchternaam"]);
                         unset($_SESSION["klantGebruikersnaam"]);
                         unset($_SESSION["kantEmail"]);
+                        echo '<script>window.location.href = "index.php";</script>';
                     }
         ?>
             </div>

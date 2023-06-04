@@ -41,6 +41,9 @@ function getIDName($tablename) {
         case 'winkelkar':
             $idField = 'winkelkarID';
             break;
+        case 'promo_code':
+            $idField = 'PromoID';
+            break;
     }
     return $idField;
 }
@@ -76,29 +79,29 @@ echo "</table>";
  * Save
  */
 
-echo "<input type='submit' name='submit' value='Save'>";
+    echo "<input type='submit' name='submit' value='Save'>";
 
-if (isset($_POST["submit"])) {
-    $setValues = '';
-    foreach ($_POST as $column => $value) {
-        $updatedValues[$column] = $value;
-        if ($column !== $idName && $column !== "submit") {
-            $setValues .= $column . "='" . $value . "',";
+    if (isset($_POST["submit"])) {
+        $setValues = '';
+        foreach ($_POST as $column => $value) {
+            $updatedValues[$column] = $value;
+            if ($column !== $idName && $column !== "submit") {
+                $setValues .= $column . "='" . $value . "',";
+            }
         }
-    }
-    $setValues = rtrim($setValues, ",");
-    $updateSQL = "UPDATE " . $name . " SET " . $setValues . " WHERE " . $idName . " = " . $id;
+        $setValues = rtrim($setValues, ",");
+        $updateSQL = "UPDATE " . $name . " SET " . $setValues . " WHERE " . $idName . " = " . $id;
 
-    if ($connect->query($updateSQL) === TRUE) {
-        echo "<br>Row updated! <br>";
-    } else {
-        echo "Row Error: " . $connect->error;
+        if ($connect->query($updateSQL) === TRUE) {
+            echo "<br>Row updated! <br>";
+        } else {
+            echo "Row Error: " . $connect->error;
+        }
+        
     }
-    echo "Form submitted!";
-}
 
-echo "</form>";
-echo "</div>";
+    echo "</form>";
+    echo "</div>";
 
 
 ?>
