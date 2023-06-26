@@ -5,7 +5,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="../images/Royal_Ring_Logo_3.svg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../modules/assest/header.css">
-    <title>header</title>
+    <title>Royal Ring</title>
 
     <script> 
       // var hamburger = document    .getElementById("hamburger_image");
@@ -14,7 +14,7 @@
         function myFunction() {
             if(!open) {
                 open = true;
-                 document.getElementById("menu_items_responsive").style.display = "block";
+                 document.getElementById("menu_items_responsive").style.display = "inline-block";
             }else{
                 document.getElementById("menu_items_responsive").style.display = "none";
                 open = false;
@@ -45,7 +45,7 @@
 
                 <div id="inner_head_content_list">
                     <li><a href="../index/index.php">Home</a></li>
-                    <li><a href="../about-us/index.php">Over ons</a></li>
+                    <li><a href="../about-us/index.php">A propos de nous</a></li>
                     <li><a href="../admin/index.php">Admin</a></li>
                     <li><a href="../producten-php/horloges.php">Horloges</a></li>
                     <li><a href="../producten-php/ringen.php">Ringen</a></li>
@@ -87,9 +87,9 @@
                 <div id="test">
                 <div>
                     <li><a href="../modules/index.php">Home</a></li>
-                    <li><a href="../about-us/index.php">Over ons</a></li>
+                    <li><a href="../about-us/index.php">A propos de nous</a></li>
                     <li><a href="../producten-php/horloges.php">Horloges</a></li>
-                    <li><a href="#">Ringen</a></li>
+                    <li><a href="../producten-php/ringen.php">Ringen</a></li>
                 </div>
 
             <div>

@@ -179,8 +179,9 @@
                 }
                     
 
-                    //echo "<script> window.open('registreerComfirmatie.php');</script>";
+                echo "<script>window.location.href = '../registreer/registreerComfirmatie.php';</script>";
                     include "sendEmail.php"; //INCLUDE MAIL VERZENDEN
+                    //header("Location: ../registreer/registreerComfirmatie.php");
                     echo "<br>Gebruiker toegevoegd!<br>";
                   }
                     

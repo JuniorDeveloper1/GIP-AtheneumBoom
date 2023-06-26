@@ -361,6 +361,8 @@
         background-color:rgb(38, 39, 43);
         font-size: larger;
         cursor: pointer;
+
+        float:left;
     }
 
 

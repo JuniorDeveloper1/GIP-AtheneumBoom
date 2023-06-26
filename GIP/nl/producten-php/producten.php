@@ -60,7 +60,7 @@
                 echo "    <span id='buyDivPrice'>"."€".$artikel["Prijs"]."</span>";;
                 echo "<form method='post' id='addToCartForm'>";
                 echo "    <button id='buyDivAddToCart' name='addtocartButton'>";
-                echo "        Toevoegen aan mandje";
+                echo "        ajouter au panier";
                 echo "</button>";
 
             

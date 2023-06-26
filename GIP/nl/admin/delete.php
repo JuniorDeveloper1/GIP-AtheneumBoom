@@ -12,20 +12,8 @@
          case 'klant':
              $idField = 'klantID';
              break;
-         case 'admin':
-             $idField = 'AdminID';
-             break;
          case 'producten':
              $idField = 'ArtikelID';
-             break;
-         case 'product_categorie':
-             $idField = 'CategorieID';
-             break;
-         case 'winkelkar':
-             $idField = 'winkelkarID';
-             break;
-         case 'promo_code':
-            $idField = 'promoID';
              break;
      }
      return $idField;

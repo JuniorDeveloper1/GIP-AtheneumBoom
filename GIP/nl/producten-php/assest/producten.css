@@ -298,9 +298,7 @@
 
 }
 
-
-
-@media only screen and (max-width: 670px) { 
+@media only screen and (min-width: 670px) { 
     #container {
        align-items: center;
    }
@@ -321,8 +319,7 @@
    
    }
    #three-row {
-       /**Cant use*/
-       width: 431px;
+  
    }
 
    #productImage {

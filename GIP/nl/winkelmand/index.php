@@ -53,6 +53,8 @@
             $totalPrice += $btw;
 
             $totalPrice = round($totalPrice, 2);
+
+            $_SESSION["totalPrice"] = $totalPrice;
         }
     }
 ?>
@@ -131,7 +133,13 @@
                     
                     echo ($totalPrice - $discountAmount );
                     if(isset($_POST["promoButton"])){
-                        $_SESSION["totalPrice"] =  ($totalPrice - $_SESSION["discountTotal"]);
+                        if(($totalPrice-$discountAmount) < 0) {
+                            $_SESSION["totalPrice"] =  1;
+                        }else {
+                           
+                            $_SESSION["totalPrice"] =  ($totalPrice - $_SESSION["discountTotal"]);
+                        }
+                      
                     }
                      ?></td>
             </tr>
@@ -155,7 +163,7 @@
     <tr id="table_names">
         <td><span>Items</span></td>
         <td>Name</td>
-        <td id="table_names_center"><span>Quantity</span></td>
+        <td id="table_names_center"><span>quantité</span></td>
         <td id="table_names_center"><span>Prijs product</span></td>
         <td id="table_totaal">Totaal</td>
     </tr>

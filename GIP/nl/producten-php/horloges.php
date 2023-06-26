@@ -16,7 +16,9 @@ include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php');
 
 ?>
         <?php 
-            $query = "SELECT * FROM producten A1 INNER JOIN product_categorie A2 ON  A1.CategorieID = A2.CategorieID";
+            $query = "SELECT * FROM producten A1 
+            INNER JOIN product_categorie A2 
+            ON  A1.CategorieID = A2.CategorieID";
             $aantal = 0;
 
             $result = $connect -> query($query);

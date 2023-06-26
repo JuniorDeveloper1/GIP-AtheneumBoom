@@ -1,94 +1,75 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+<body>
+    <?php
+    include("../modules/header.php");
     include ('C:\USBWebserver\USBWebserver_GIP\root\GIP\dbConnection.php'); 
-    include ('../modules/header.php');
-    $databaseName = $_GET["databaseName"];
-
-    $klantColumns = array('klantID', 'klantVoornaam', 'klantAchternaam', 'klantGebruikersnaam', 'klantEmail', 'klantWachtwoord', 'isActive', 'klantToken');
-    $adminColumns = array('AdminID', 'isAdmin', 'klantID');
-    $productColumns = array('ArtikelID', 'ArtikelNaam', 'Prijs', 'Omschrijving', 'groteOmschrijving', 'imageURL', 'Korting', 'categorieID');
-    $productCategorieColumns = array('CategorieID', 'CategorieNaam');
-    $promoCodeColumns = array('PromoID', 'PormoCode', 'Promo_discount_percentage');
-    $winkelkarColumns = array('WinkelkarID', 'klantID', 'ArtikelID', 'Aantal');
-
-    if ($databaseName == 'klant') {
-        $columns = $klantColumns;
-    } elseif ($databaseName == 'admin') {
-        $columns = $adminColumns;
-    } elseif ($databaseName == 'producten') {
-        $columns = $productColumns;
-    } elseif ($databaseName == 'product_categorie') {
-        $columns = $productCategorieColumns;
-    } elseif ($databaseName == 'promo_code') {
-        $columns = $promoCodeColumns;
-    } elseif ($databaseName == 'winkelkar') {
-        $columns = $winkelkarColumns;
-    }
-
-    echo "<div>";
-    echo "<form method='post' id='form' action=''>";
-    echo "<table>";
-
-    foreach ($columns as $index => $column) {
-        echo "<tr>";
-        echo "<td>" . $column . "</td>";
-        echo "<td><input type='text' name='" . $column . "' value='" . ($index === 0 ? (getLatestPrimaryKey($connect, $databaseName, $columns[0])) : '') . "'" . ($index === 0 ? "readonly" : "") . "></td>";
-        echo "</tr>";
-    }
-    echo "</table>";
-
-    echo "<input type='submit' name='save' value='Save'>";
+    
+    echo "
+    <form method='POST' action=''>
+        <table>
+            <tr>
+                <td>ArtikelNaam:</td>
+                <td><input type='text' name='ArtikelNaam'></td>
+            </tr>
+            <tr>
+                <td>Prijs:</td>
+                <td><input type='number' name='Prijs'></td>
+            </tr>
+            <tr>
+                <td>Omschrijving:</td>
+                <td><input type='text' name='omschrijving'></td>
+            </tr>
+            <tr>
+                <td>Grote Omschrijving:</td>
+                <td><textarea rows='4' cols='35' name='groteOmschrijving'></textarea></td>
+            </tr>
+            <tr>
+                <td>Image URL:</td>
+                <td><input type='text' name='imageURL'></td>
+            </tr>
+            <tr>
+                <td>Korting:</td>
+                <td><input type='number' name='korting'></td>
+            </tr>
+            <tr>
+                <td>Categorie ID:</td>
+                <td><input type='number' name='CategorieID'></td>
+            </tr>
+            <tr>
+                <td colspan='2'><button name='save' type='submit'>Add product</button></td>
+            </tr>
+        </table>
+    </form>";
 
     if (isset($_POST["save"])) {
-        $values = array();
-        foreach ($columns as $index => $column) {
-            if ($index === 0) {
-                continue; // Skip the primary key column
-            }
-    
-            if (isset($_POST[$column])) {
-                $value = $connect->real_escape_string($_POST[$column]);
-            } else {
-                $value = null;
-            }
-    
-            if ($value !== null) {
-                $values[] = "'" . $value . "'";
-            } else {
-                $values[] = 'NULL';
-            }
-        }
-        
-        
-        $sql = "INSERT INTO " . $databaseName . " VALUES(" .(getLatestPrimaryKey($connect, $databaseName, $columns[0])). ", " . implode(", ", $values) . ")";
-        
+        $artikelNaam = strip_tags($_POST["ArtikelNaam"]);
+        $prijs = strip_tags($_POST["Prijs"]);
+        $omschrijving = strip_tags($_POST["omschrijving"]);
+        $groteOmschrijving = strip_tags($_POST["groteOmschrijving"]);
+        $imageURL = strip_tags($_POST["imageURL"]);
+        $korting = strip_tags($_POST["korting"]);
+        $CategorieID = strip_tags($_POST["CategorieID"]);
 
+    
 
-        if ($connect->query($sql) === true) {
-            echo "Inserted!";
-        } else {
-            echo "Error in record: " . $connect->error;
+        $query = "INSERT INTO producten (`ArtikelNaam`, `Prijs`, `omschrijving`, `groteOmschrijving`, `imageURL`, `korting`, `CategorieID`)
+                  VALUES ('$artikelNaam', '$prijs', '$omschrijving', '$groteOmschrijving', '$imageURL', '$korting', '$CategorieID')";
+        
+        $qresult = $connect->query($query);
+
+        if($qresult) {
+            echo "<script>window.location.href = '../admin/index.php';</script>";
         }
     }
-
-    echo "</form>";
-    echo "</div>";
-
-    include ('../modules/footer.html');
-
-    function getLatestPrimaryKey($connect, $tableName, $primaryKeyColumn) {
-        $sql = "SELECT MAX($primaryKeyColumn) AS max FROM $tableName";
-        $result = $connect->query($sql);
     
-        if ($result !== false && $result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $latestPrimaryKey = $row['max'];
-            if (is_numeric($latestPrimaryKey)) {
-                return intval($latestPrimaryKey) + 1;
-            }
-        }
-
-        return 1;
-    }
-    
-    
-?>    
+    include("../modules/footer.html");
+    ?>
+</body>
+</html>
